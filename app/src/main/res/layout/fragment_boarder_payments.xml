@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".BoarderPaymentsFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Payment Mode"
+        android:textColor="@android:color/black"
+        android:textSize="28sp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/paytm_image"
+                style="@style/fee_payment_image_view_Style"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/paytm_content_description"
+                android:src="@drawable/paytm_drawable" />
+
+            <ImageButton
+                android:id="@+id/phonepe_image"
+                style="@style/fee_payment_image_view_Style"
+                android:contentDescription="@string/phonepe_content_description"
+                android:src="@drawable/phonepe_drawable" />
+
+            <ImageButton
+                android:id="@+id/stripe_image"
+                style="@style/fee_payment_image_view_Style"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/stripe_content_description"
+                android:src="@drawable/stripe_drawable" />
+
+            <ImageButton
+                android:id="@+id/g_pay_image"
+                style="@style/fee_payment_image_view_Style"
+                android:contentDescription="@string/google_pay_content_description"
+                android:src="@drawable/google_pay_drawable" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Previous Payments"
+        android:textSize="20sp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/dummy_list_view" />
+
+</LinearLayout>

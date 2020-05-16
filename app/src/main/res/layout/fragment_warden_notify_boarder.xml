@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_warden_notify_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WardenNotifyBoarderFragment">
+
+    <LinearLayout
+        android:id="@+id/warden_notify_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".WardenNotifyBoarderFragment">
+
+        <TextView
+            android:id="@+id/tv_boarder_msg_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="24dp"
+            android:text="Message To Boarder"
+            android:textColor="@android:color/black"
+            android:textSize="28dp" />
+
+        <EditText
+            android:id="@+id/et_notify_boarder_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:drawableStart="@drawable/face_id"
+            android:drawablePadding="8dp"
+            android:hint="Enter Boarder ID"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLength="10" />
+
+        <EditText
+            android:id="@+id/et_notify_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:autofillHints="Fee Payment"
+            android:drawableStart="@drawable/message"
+            android:drawablePadding="8dp"
+            android:hint="Enter Message"
+            android:inputType="text"
+            android:maxLines="3" />
+
+        <Button
+            android:id="@+id/btn_send_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@color/button_color"
+            android:text="Send Message"
+            android:textColor="@color/button_text_color" />
+
+    </LinearLayout>
+</ScrollView>

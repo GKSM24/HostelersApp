@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_selection_root_scroll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectUserActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_selection_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvSelectUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="144dp"
+            android:text="@string/select_user_text"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnSWarden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:background="@color/button_color"
+            android:onClick="gotoAdminSignIn"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:text="@string/warden_text"
+            android:textColor="@color/button_text_color"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSelectUser" />
+
+        <Button
+            android:id="@+id/btnSBoarder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/button_color"
+            android:onClick="gotoBoarderSignIn"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/boarder_text"
+            android:textColor="@color/button_text_color"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSWarden" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

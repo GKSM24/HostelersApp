@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hostel_signUp_root_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HostelSignUpActivity">
+
+    <LinearLayout
+        android:id="@+id/hostel_signUp_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".HostelSignUpActivity">
+
+        <TextView
+            android:id="@+id/hostel_signUp_TextView_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/hostel_sign_up_text"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/hostel_name"
+            style="@style/edit_text_style"
+            android:autofillHints="My hostel"
+            android:drawableEnd="@drawable/building"
+            android:hint="@string/hostel_name_text"
+            android:inputType="textPersonName"
+            android:maxLength="30" />
+
+        <RelativeLayout
+            android:id="@+id/layout_document_attach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp">
+
+            <TextView
+                android:id="@+id/hostel_doc_proof_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hostel_proof_text"
+                android:textSize="18sp"
+                tools:ignore="RelativeOverlap" />
+
+            <ImageButton
+                android:id="@+id/doc_upload_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/button_color"
+                android:contentDescription="@string/hostel_upload_description"
+                android:src="@android:drawable/stat_sys_upload" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/location"
+            style="@style/edit_text_style"
+            android:autofillHints="JNTU"
+            android:drawableEnd="@drawable/location"
+            android:hint="@string/hostel_location_text"
+            android:inputType="textPostalAddress"
+            android:maxLength="30" />
+
+        <EditText
+            android:id="@+id/warden_name"
+            style="@style/edit_text_style"
+            android:autofillHints="Name"
+            android:drawableEnd="@drawable/username"
+            android:hint="@string/hostel_warden_name"
+            android:inputType="textPersonName"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/warden_email_hostelSignUp"
+            style="@style/edit_text_style"
+            android:autofillHints="abc@email.com"
+            android:drawableEnd="@drawable/email"
+            android:hint="@string/form_email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/warden_mobile_hostelSignup"
+            style="@style/edit_text_style"
+            android:autofillHints="0000000000"
+            android:drawableEnd="@drawable/phone"
+            android:hint="@string/form_phone_number"
+            android:inputType="phone"
+            android:maxLength="10" />
+
+        <Button
+            android:id="@+id/hostel_signUp_submit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/button_color"
+            android:text="@string/submit"
+            android:textColor="@color/button_text_color" />
+    </LinearLayout>
+</ScrollView>

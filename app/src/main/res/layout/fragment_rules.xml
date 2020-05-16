@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RulesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        style = "@style/heading_style"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/hostel_rules_text_view" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        >
+    <TextView
+        android:id = "@+id/rules_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "@string/rules_content"
+        android:textSize = "24sp"
+        android:layout_gravity = "center"
+        android:gravity="center"/>
+    </ScrollView>
+    <CheckBox
+        android:id = "@+id/rules_agreement_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text = "@string/agreement_text"
+        android:paddingLeft = "16dp"/>
+</LinearLayout>

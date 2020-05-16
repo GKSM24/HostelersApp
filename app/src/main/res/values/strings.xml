@@ -1,0 +1,123 @@
+<resources>
+    <!-- Basic Activities Strings-->
+    <string name="app_name">Hostelers</string>
+    <string name="hostel_list_btn_text">Hostel\'s List</string>
+    <string name="hostel_sign_up_text">Hostel SignUp</string>
+    <string name="hostel_list_text">Select Your Hostel</string>
+    <string name="submit">Submit</string>
+    <string name="warden_id_text">Warden Id</string>
+    <string name="warden_sign_in_text">Warden SignIn</string>
+    <string name="password_text">Password</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="sign_in_text">Sign In</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="boarder_id_text">Boarder Id</string>
+    <string name="boarder_sign_in_text">Boarder Sign-in</string>
+    <string name="warden_text">Warden</string>
+    <string name="boarder_text">Boarder</string>
+    <string name="select_user_text">Select User</string>
+    <string name="id_text">Enter ID</string>
+    <string name="confirm_password_text">Confirm Password</string>
+    <string name="new_password_text">New Password</string>
+
+
+    <!-- Hostel Sign Up-->
+    <string name="hostel_name_text"> Hostel Name </string>
+    <string name="hostel_proof_text"> <b>Add document proof</b>\n(.jpeg or .png) </string>
+    <string name="hostel_location_text"> Hostel Location </string>
+    <string name="hostel_warden_name">Warden/Owner Name</string>
+    <string name="hostel_upload_description">Upload Hostel Proof Document</string>
+
+
+    <!-- Sign Up Activity Strings-->
+    <string name="title_activity_sign_up">SignUpActivity</string>
+
+
+    <string name="tab_text_1">Form</string>
+    <string name="tab_text_2">Rules</string>
+    <string name="tab_text_3">Documents</string>
+    <string name="tab_text_4">Payment</string>
+
+
+    <!-- spinner values for form designation -->
+    <string-array name="designation_values">
+        <item>Student</item>
+        <item>Employee</item>
+        <item>Other</item>
+    </string-array>
+
+    <!--Form tab strings -->
+    <string name="form_boarder_name">Name</string>
+    <string name="form_email">Email</string>
+    <string name="form_father_name">Father\'s Name</string>
+    <string name="form_phone_number">Mobile Number</string>
+    <string name="form_designation">Select Designation</string>
+
+    <!-- rules tab strings-->
+    <string name="agreement_text">I agree to the above rules</string>
+    <string name="hostel_rules_text_view">Hostel Rules</string>
+    <string name="rules_content">Some Rules</string>
+
+    <!-- id proofs strings-->
+    <string name="id_proofs_heading">Attach ID Proofs</string>
+    <string name="id_proofs_rules">* ATTACH EITHER AADHAAR OR PAN CARD IMAGE FILE\n* ATTACH A PHOTOGRAPH IMAGE</string>
+    <string name="id_proofs_note">**<b><u>Note:</u></b> The files must be less than 1MB</string>
+
+    <string-array name="id_proofs_values">
+        <item>PAN CARD</item>
+        <item>AADHAAR CARD</item>
+    </string-array>
+
+    <string name="id_proof_add_photo"><b>ATTACH YOUR PHOTO</b>\n(.jpeg or .png)</string>
+
+    <!-- payment tab strings-->
+    <string name="payments_choice_heading">Choose your Hostel Payment Method:</string>
+    <string name="hostel_payment_choice1">Monthly</string>
+    <string name="hostel_payment_choice2">Quarterly</string>
+    <string name="hostel_payment_choice3">Annually</string>
+    <string name="Fee_payment_text">Fee Payment Options:</string>
+    <string name="paytm_content_description">Click on this image for Payment Through Paytm</string>
+    <string name="phonepe_content_description">Click on this image for Payment Through Phonepe</string>
+    <string name="stripe_content_description">Click on this image for Payment Through Paytm</string>
+    <string name="google_pay_content_description">Click on this image for Payment Through Paytm</string>
+
+    <!-- Tool bar spinner values -->
+    <string-array name="toolbar_spinner">
+        <item>Change Password</item>
+        <item>Sign Out</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="dummy_list_view">
+        <item>NOTIFICATION 1</item>
+        <item>NOTIFICATION 2</item>
+        <item>NOTIFICATION 3</item>
+        <item>NOTIFICATION 4</item>
+        <item>NOTIFICATION 5</item>
+        <item>NOTIFICATION 6</item>
+        <item>NOTIFICATION 7</item>
+        <item>NOTIFICATION 8</item>
+        <item>NOTIFICATION 9</item>
+        <item>NOTIFICATION 10</item>
+        <item>NOTIFICATION 11</item>
+        <item>NOTIFICATION 12</item>
+        <item>NOTIFICATION 13</item>
+        <item>NOTIFICATION 14</item>
+        <item>NOTIFICATION 15</item>
+    </string-array>
+
+
+    <string-array name="issues_spinner">
+        <item>Report an Issue</item>
+        <item>Submit Leave Letter</item>
+    </string-array>
+
+    <string-array name="issue_category_spinner">
+        <item>Electrical</item>
+        <item>Water</item>
+        <item>Carpentry</item>
+        <item>Personal</item>
+    </string-array>
+</resources>

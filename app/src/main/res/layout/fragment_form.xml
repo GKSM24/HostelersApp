@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/form_scroll_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/form_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".FormFragment">
+
+        <!-- TODO: Update fragment layout -->
+        <EditText
+            android:id="@+id/boardername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:autofillHints="username"
+            android:drawableEnd="@drawable/username"
+            android:hint="@string/form_boarder_name"
+            android:inputType="textPersonName"
+            android:maxLength="20" />
+
+
+        <EditText
+            android:id="@+id/fathername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:autofillHints="user father name"
+            android:drawableEnd="@drawable/username"
+            android:hint="@string/form_father_name"
+            android:inputType="textPersonName"
+            android:maxLength="20" />
+
+        <TextView
+            android:id="@+id/designation_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/form_designation" />
+
+        <Spinner
+            android:id="@+id/designation_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:entries="@array/designation_values" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:autofillHints="email"
+            android:drawableEnd="@drawable/email"
+            android:hint="@string/form_email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/mobile_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:drawableEnd="@drawable/phone"
+            android:hint="@string/form_phone_number"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:maxLength="10" />
+    </LinearLayout>
+</ScrollView>

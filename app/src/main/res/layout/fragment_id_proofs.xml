@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/proofs_scroll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/id_proofs_root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".IdProofsFragment">
+
+        <TextView
+            android:id="@+id/id_proofs_heading_tv"
+            style="@style/heading_style"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/id_proofs_heading" />
+
+        <TextView
+            android:id="@+id/id_proofs_rules_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/id_proofs_rules"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_proofs_note_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/id_proofs_note" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/id_proofs_attachments_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <Spinner
+                android:id="@+id/id_proofs_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="48dp"
+                android:entries="@array/id_proofs_values"
+                android:popupBackground="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/id_proof_attachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/design_default_color_background"
+                android:src="@drawable/attachment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/id_proofs_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/id_proof_photo_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="48dp"
+                android:text="@string/id_proof_add_photo"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/id_proofs_spinner" />
+
+            <ImageButton
+                android:id="@+id/id_proof_photo_attachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="45dp"
+                android:background="@color/design_default_color_background"
+
+                android:src="@drawable/attachment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/id_proof_photo_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/id_proof_attachment" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

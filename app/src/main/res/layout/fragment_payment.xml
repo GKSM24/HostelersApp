@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id = "@+id/payment_scroll_root_layout">
+
+    <LinearLayout
+        android:id="@+id/payment_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".PaymentFragment">
+
+        <TextView
+            android:id="@+id/payment_hostel_pay_tv"
+            style="@style/heading_style"
+            android:text="@string/payments_choice_heading" />
+
+        <RadioGroup
+            android:id="@+id/hostel_pay_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RadioButton
+                android:id="@+id/hostel_pay_monthly"
+                style="@style/payments_radio_button"
+                android:text="@string/hostel_payment_choice1" />
+
+            <RadioButton
+                android:id="@+id/hostel_pay_quaterly"
+                style="@style/payments_radio_button"
+                android:text="@string/hostel_payment_choice2" />
+
+            <RadioButton
+                android:id="@+id/hostel_pay_annual"
+                style="@style/payments_radio_button"
+                android:text="@string/hostel_payment_choice3" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/fee_payment_opt"
+            style="@style/heading_style"
+            android:text="@string/Fee_payment_text" />
+
+
+        <ImageButton
+            android:id="@+id/paytm_image"
+            style="@style/fee_payment_image_view_Style"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/paytm_content_description"
+            android:src="@drawable/paytm_drawable" />
+
+        <ImageButton
+            android:id="@+id/phonepe_image"
+            style="@style/fee_payment_image_view_Style"
+            android:contentDescription="@string/phonepe_content_description"
+            android:src="@drawable/phonepe_drawable" />
+
+        <ImageButton
+            android:id="@+id/stripe_image"
+            style="@style/fee_payment_image_view_Style"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/stripe_content_description"
+            android:src="@drawable/stripe_drawable" />
+
+        <ImageButton
+            android:id="@+id/g_pay_image"
+            style="@style/fee_payment_image_view_Style"
+            android:contentDescription="@string/google_pay_content_description"
+            android:src="@drawable/google_pay_drawable" />
+
+    </LinearLayout>
+</ScrollView>
