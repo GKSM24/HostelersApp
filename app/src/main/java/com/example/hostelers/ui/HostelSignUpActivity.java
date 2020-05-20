@@ -1,7 +1,11 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -10,15 +14,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hostelers.backend.HostelSignUpResult;
+import com.example.hostelers.backend.RetrofitInterface;
+import com.example.hostelers.R;
+
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
-public class HostelSignUpActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+public class HostelSignUpActivity extends AppCompatActivity {
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://10.0.2.2:3000";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hostel_sign_up);
-
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
         final EditText hostelName = findViewById(R.id.hostel_name), hostelLocation = findViewById(R.id.location), hostelWarden = findViewById(R.id.warden_name);
         final EditText emailWarden = findViewById(R.id.warden_email_hostelSignUp), mobile = findViewById(R.id.warden_mobile_hostelSignup);
         Button submit = findViewById(R.id.hostel_signUp_submit);
@@ -88,10 +106,59 @@ public class HostelSignUpActivity extends AppCompatActivity {
                     }
                 }
                 if (flag) {
-                    Toast.makeText(getApplicationContext(), "Request Sent", Toast.LENGTH_LONG).show();
-                    finish();
+                    HashMap<String, String> details = new HashMap<>();
+                    details.put("hostelName",hostelName_text);
+                    details.put("hostelLocation", hostelLocation_text);
+                    details.put("wardenName", wardenName);
+                    details.put("wardenEmail", email);
+                    details.put("wardenNumber", mobile_num);
+                    Call<HostelSignUpResult> hostelDetails = retrofitInterface.executeHostelSignUp(details);
+                    hostelDetails.enqueue(new Callback<HostelSignUpResult>() {
+                        @Override
+                        public void onResponse(Call<HostelSignUpResult> call, Response<HostelSignUpResult> response) {
+                            int response_code = response.code();
+                            if(response_code == 200){
+                                HostelSignUpResult result = response.body();
+                                Toast.makeText(getApplicationContext(), "SignUp Successful!\n Please check your mail for credentials.", Toast.LENGTH_LONG).show();
+                                sendMail(result.getEmail(),result.getWardenId(), result.getWardenKey());
+                                finish();
+                            }
+                            else if(response_code == 409){
+                                openAlertDialog("User Exists!");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<HostelSignUpResult> call, Throwable t) {
+                            openAlertDialog("Request Error! Try Again.");
+                        }
+                    });
                 }
             }
         });
+
+    }
+
+    private void openAlertDialog(String message){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setMessage(message).setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // empty
+            }
+        }).show();
+    }
+
+    private void sendMail(String email, String id, String key){
+        String message = "Welcome to Hostelers!\nYour Warden ID: "+id+"\nYour Password: "+key+"\n Thank You for being a part of Hostelers!.";
+        String emails[] = {email};
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, emails);
+        intent.putExtra(Intent.EXTRA_SUBJECT,"Hostelers Credentials");
+        intent.putExtra(Intent.EXTRA_TEXT,message);
+        if(intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
     }
 }

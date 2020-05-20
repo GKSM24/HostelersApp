@@ -5,7 +5,7 @@
     android:id="@+id/warden_act_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WardenActivity">
+    tools:context=".ui.WardenActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/warden_appbar_layout"

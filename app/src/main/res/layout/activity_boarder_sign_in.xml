@@ -5,7 +5,7 @@
     android:id="@+id/boarderSignIn_root_scroll_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BoarderSignInActivity">
+    tools:context=".ui.BoarderSignInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/boarderSignIn_main_layout"

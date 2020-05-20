@@ -5,7 +5,7 @@
     android:id="@+id/wardenSignIn_root_scroll_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminLoginActivity">
+    tools:context=".ui.AdminLoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/AdminLoginLayoutId"

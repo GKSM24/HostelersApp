@@ -1,10 +1,11 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.hostelers.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class SignUpActivity extends AppCompatActivity {

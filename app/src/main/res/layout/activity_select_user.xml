@@ -5,7 +5,7 @@
     android:id="@+id/user_selection_root_scroll_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectUserActivity">
+    tools:context=".ui.SelectUserActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/user_selection_main_layout"

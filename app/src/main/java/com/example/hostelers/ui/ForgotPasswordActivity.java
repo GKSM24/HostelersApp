@@ -1,7 +1,9 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,15 +11,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hostelers.R;
+import com.example.hostelers.backend.RetrofitInterface;
+
+import java.util.HashMap;
 import java.util.regex.*;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ForgotPasswordActivity extends AppCompatActivity {
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://10.0.2.2:3000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
         final EditText id = findViewById(R.id.etId), new_password = findViewById(R.id.etPwd), confirm_password = findViewById(R.id.etRe_enterPwd);
         Button submit = findViewById(R.id.btnSubmit);
         MyEditTextListener myTextListener = new MyEditTextListener();
@@ -89,9 +107,38 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     }
                 }
                 if(flag){
-                    Toast.makeText(getApplicationContext(), "Password Changed to " + new_password.getText().toString(), Toast.LENGTH_LONG).show();
-                    finish(); // also helps us to go back to previous activity
+                    HashMap<String, String> details = new HashMap<>();
+                    details.put("id", id_text);
+                    details.put("newPassword", new_password_text);
+                    Call<Void> call =  retrofitInterface.executeForgotPassword(details);
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            int response_code = response.code();
+                            if(response_code == 200) {
+                                Toast.makeText(getApplicationContext(), "Password Change Successful!", Toast.LENGTH_LONG).show();
+                                finish(); // also helps us to go back to previous activity
+                            }
+                            else if(response_code == 404)
+                                openAlertDialog("Id not found! Please sign up before you change password.");
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            openAlertDialog("Connection Error! Try Again!");
+                        }
+                    });
                 }
+            }
+        });
+    }
+
+    private void openAlertDialog(String message){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Error").setMessage(message).setNeutralButton("OK,", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                //empty
             }
         });
     }

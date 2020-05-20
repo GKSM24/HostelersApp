@@ -5,7 +5,7 @@
     android:id="@+id/Boarder_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BoarderActivity">
+    tools:context=".ui.BoarderActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout

@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

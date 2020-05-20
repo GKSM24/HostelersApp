@@ -1,10 +1,12 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.hostelers.R;
 
 public class InitialActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import android.os.Bundle;
 
@@ -8,15 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hostelers.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RulesFragment#newInstance} factory method to
+ * Use the {@link IdProofsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RulesFragment extends Fragment {
+public class IdProofsFragment extends Fragment {
 
-    public RulesFragment() {
+    public IdProofsFragment() {
         // Required empty public constructor
     }
 
@@ -26,11 +28,11 @@ public class RulesFragment extends Fragment {
      *
      *
      *
-     * @return A new instance of fragment RulesFragment.
+     * @return A new instance of fragment IdProofsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RulesFragment newInstance() {
-        return new RulesFragment();
+    public static IdProofsFragment newInstance() {
+        return new IdProofsFragment();
     }
 
     @Override
@@ -42,6 +44,6 @@ public class RulesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rules, container, false);
+        return inflater.inflate(R.layout.fragment_id_proofs, container, false);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.example.hostelers.R;
 
 // Here main activity is the splash screen.
 public class MainActivity extends AppCompatActivity {

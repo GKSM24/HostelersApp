@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id = "@+id/hostel_list_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HostelListActivity">
+    tools:context=".ui.HostelListActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +14,6 @@
         android:padding="16dp"
         android:text="@string/hostel_list_text"
         android:textAppearance="?android:textAppearanceLarge" />
-
 
     <ScrollView
         android:id="@+id/hostel_list_scroll_view"
@@ -23,107 +23,19 @@
         >
 
         <RadioGroup
+            android:id = "@+id/hostel_list_radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 1"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 2"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 3"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 4"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 5"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 6"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 7"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 8"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 9"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 10"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 11"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 12"
-                android:textSize="20sp" />
-
-            <RadioButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Hostel 13"
-                android:textSize="20sp" />
         </RadioGroup>
     </ScrollView>
 
     <Button
+        android:id = "@+id/hostel_list_submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/button_color"
         android:onClick="onSubmit"
         android:text="@string/submit"
         android:textColor="@color/button_text_color" />
+
 </LinearLayout>

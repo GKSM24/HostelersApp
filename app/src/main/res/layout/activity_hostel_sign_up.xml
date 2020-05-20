@@ -6,14 +6,14 @@
     android:id="@+id/hostel_signUp_root_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HostelSignUpActivity">
+    tools:context=".ui.HostelSignUpActivity">
 
     <LinearLayout
         android:id="@+id/hostel_signUp_main_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".HostelSignUpActivity">
+        tools:context=".ui.HostelSignUpActivity">
 
         <TextView
             android:id="@+id/hostel_signUp_TextView_heading"

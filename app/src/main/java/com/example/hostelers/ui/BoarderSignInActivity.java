@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.hostelers.R;
+
+import java.util.HashMap;
 
 public class BoarderSignInActivity extends AppCompatActivity {
 
@@ -33,6 +37,10 @@ public class BoarderSignInActivity extends AppCompatActivity {
                     flag = false;
                 }
                 if (flag) {
+                    /*Intent fromIntent = getIntent();
+                    HashMap<String, String> credentials = new HashMap<>();
+                    credentials.put("hostelName", fromIntent.getStringExtra("hostelName"));
+                    credentials.put("hostelLocation", fromIntent.getStringExtra("hostelLocation"));*/
                     Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(BoarderSignInActivity.this, BoarderActivity.class);
                     startActivity(intent);

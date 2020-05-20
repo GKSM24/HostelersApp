@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".PaymentFragment">
+        tools:context=".ui.PaymentFragment">
 
         <TextView
             android:id="@+id/payment_hostel_pay_tv"

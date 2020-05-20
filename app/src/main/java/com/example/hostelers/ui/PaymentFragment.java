@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import android.os.Bundle;
 
@@ -8,15 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hostelers.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WardenNotifyBoarderFragment#newInstance} factory method to
+ * Use the {@link PaymentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WardenNotifyBoarderFragment extends Fragment {
+public class PaymentFragment extends Fragment {
 
-    public WardenNotifyBoarderFragment() {
+
+    public PaymentFragment() {
         // Required empty public constructor
     }
 
@@ -25,12 +28,12 @@ public class WardenNotifyBoarderFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      *
-     * @return A new instance of fragment WardenNotifyBoarderFragment.
+     *
+     * @return A new instance of fragment PaymentFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WardenNotifyBoarderFragment newInstance() {
-        WardenNotifyBoarderFragment fragment = new WardenNotifyBoarderFragment();
-        return fragment;
+    public static PaymentFragment newInstance() {
+        return new PaymentFragment();
     }
 
     @Override
@@ -42,6 +45,6 @@ public class WardenNotifyBoarderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_warden_notify_boarder, container, false);
+        return inflater.inflate(R.layout.fragment_payment, container, false);
     }
 }

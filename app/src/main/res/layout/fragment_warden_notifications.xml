@@ -5,4 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:entries="@array/dummy_list_view"
-    tools:context=".WardenNotificationsFragment" />
+    tools:context=".ui.WardenNotificationsFragment" />

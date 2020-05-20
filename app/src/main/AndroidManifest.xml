@@ -2,26 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hostelers">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WardenActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.WardenActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".BoarderActivity"
+            android:name=".ui.BoarderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HostelSignUpActivity" />
-        <activity android:name=".InitialActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".SelectUserActivity" />
-        <activity android:name=".BoarderSignInActivity" />
-        <activity android:name=".AdminLoginActivity" />
-        <activity android:name=".HostelListActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.HostelSignUpActivity" />
+        <activity android:name=".ui.InitialActivity" />
+        <activity android:name=".ui.SignUpActivity" />
+        <activity android:name=".ui.ForgotPasswordActivity" />
+        <activity android:name=".ui.SelectUserActivity" />
+        <activity android:name=".ui.BoarderSignInActivity" />
+        <activity android:name=".ui.AdminLoginActivity" />
+        <activity android:name=".ui.HostelListActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

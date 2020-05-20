@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,11 +8,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class BoarderAdapter extends FragmentPagerAdapter {
+public class WardenViewPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> fragmentList = new ArrayList<>();
     private ArrayList<String> fragmentTitle = new ArrayList<>();
 
-    public BoarderAdapter(FragmentManager fragmentManager){
+    public WardenViewPagerAdapter(FragmentManager fragmentManager){
         super(fragmentManager);
     }
 

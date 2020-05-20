@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <ImageView
             android:id="@+id/hostelers_image"

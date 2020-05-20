@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import android.view.KeyEvent;
 import android.widget.TextView;

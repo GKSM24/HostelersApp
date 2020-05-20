@@ -1,4 +1,4 @@
-package com.example.hostelers;
+package com.example.hostelers.ui;
 
 import android.os.Bundle;
 
@@ -8,15 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.hostelers.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BoarderNotificationsFragment#newInstance} factory method to
+ * Use the {@link WardenNewAdmissionsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BoarderNotificationsFragment extends Fragment {
+public class WardenNewAdmissionsFragment extends Fragment {
 
-    public BoarderNotificationsFragment() {
+
+    public WardenNewAdmissionsFragment() {
         // Required empty public constructor
     }
 
@@ -24,11 +27,13 @@ public class BoarderNotificationsFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment BoarderNotificationsFragment.
+     *
+     * @return A new instance of fragment WardenNewAdmissionsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BoarderNotificationsFragment newInstance() {
-        return new BoarderNotificationsFragment();
+    public static WardenNewAdmissionsFragment newInstance() {
+        WardenNewAdmissionsFragment fragment = new WardenNewAdmissionsFragment();
+        return fragment;
     }
 
     @Override
@@ -40,6 +45,6 @@ public class BoarderNotificationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_boarder_notifications, container, false);
+        return inflater.inflate(R.layout.fragment_warden_new_admissions, container, false);
     }
 }
