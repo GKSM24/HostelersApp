@@ -54,7 +54,6 @@ public class HostelListActivity extends AppCompatActivity {
                         buttonGroup.addView(button);
                         radioButtons.add(button);
                     }
-                    System.out.println(radioButtons.size());
                 }
                 else if(response_code == 404){
                     openAlertDialog("List Empty!");

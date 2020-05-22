@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.example.hostelers.R;
 
-import java.util.HashMap;
-
 public class BoarderSignInActivity extends AppCompatActivity {
 
     @Override
@@ -57,7 +55,7 @@ public class BoarderSignInActivity extends AppCompatActivity {
         forgot_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BoarderSignInActivity.this, ForgotPasswordActivity.class);
+                Intent intent = new Intent(BoarderSignInActivity.this, ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });

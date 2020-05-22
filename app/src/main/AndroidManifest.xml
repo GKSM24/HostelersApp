@@ -20,7 +20,7 @@
         <activity android:name=".ui.HostelSignUpActivity" />
         <activity android:name=".ui.InitialActivity" />
         <activity android:name=".ui.SignUpActivity" />
-        <activity android:name=".ui.ForgotPasswordActivity" />
+        <activity android:name=".ui.ChangePasswordActivity" />
         <activity android:name=".ui.SelectUserActivity" />
         <activity android:name=".ui.BoarderSignInActivity" />
         <activity android:name=".ui.AdminLoginActivity" />

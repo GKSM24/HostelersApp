@@ -25,7 +25,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class ForgotPasswordActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://10.0.2.2:3000";
@@ -33,7 +33,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
+        setContentView(R.layout.activity_change_password);
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
         final EditText id = findViewById(R.id.etId), new_password = findViewById(R.id.etPwd), confirm_password = findViewById(R.id.etRe_enterPwd);
@@ -110,7 +110,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     HashMap<String, String> details = new HashMap<>();
                     details.put("id", id_text);
                     details.put("newPassword", new_password_text);
-                    Call<Void> call =  retrofitInterface.executeForgotPassword(details);
+                    Call<Void> call =  retrofitInterface.executeChangePassword(details);
                     call.enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {

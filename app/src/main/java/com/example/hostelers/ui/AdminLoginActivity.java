@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.hostelers.R;
+import com.example.hostelers.backend.ForgotPasswordResult;
 import com.example.hostelers.backend.RetrofitInterface;
 import com.example.hostelers.backend.WardenSignInResult;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 
@@ -34,7 +37,7 @@ public class AdminLoginActivity extends AppCompatActivity {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
         final EditText userName = findViewById(R.id.WardenUsernameID), password = findViewById(R.id.WardenPasswordId);
-        Button signIn = findViewById(R.id.WardenSignInButtonId);
+        Button signIn = findViewById(R.id.WardenSignInButtonId), forgot_password = findViewById(R.id.WardenForgotPwdId);
         MyEditTextListener myTextListener = new MyEditTextListener();
         userName.setOnEditorActionListener(myTextListener);
         password.setOnEditorActionListener(myTextListener);
@@ -84,19 +87,62 @@ public class AdminLoginActivity extends AppCompatActivity {
                 }
             }
         });
+        forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean flag = true;
+                String id = userName.getText().toString();
+                if (id.isEmpty()) {
+                    Snackbar.make(userName, "Enter the Id to get the Password!", Snackbar.LENGTH_LONG).show();
+                    flag = false;
+                }
+                if(flag){
+                    Intent fromIntent = getIntent();
+                    String hostelName = fromIntent.getStringExtra("hostelName"), hostelLocation = fromIntent.getStringExtra("hostelLocation");
+                    Call<ForgotPasswordResult> call = retrofitInterface.executeForgotPassword(hostelLocation, hostelName, id);
+                    call.enqueue(new Callback<ForgotPasswordResult>() {
+                        @Override
+                        public void onResponse(Call<ForgotPasswordResult> call, Response<ForgotPasswordResult> response) {
+                            int response_code = response.code();
+                            if(response_code == 200){
+                                ForgotPasswordResult result = response.body();
+                                sendMail(result.getEmail(), result.getPassword());
+                                openAlertDialog("Current Password is sent to your Registered Email!");
+                            }
+                            else if(response_code == 404){
+                                openAlertDialog("Id not found in the hostel your searching for.Sign up before you Sign In");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ForgotPasswordResult> call, Throwable t) {
+                            openAlertDialog("Connection Failed!");
+                        }
+                    });
+                }
+            }
+        });
     }
-     public void gotoForgotPassword(View v){
-         Intent intent = new Intent(this,ForgotPasswordActivity.class);
-         startActivity(intent);
-     }
+
 
      private void openAlertDialog(String message){
          AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-         dialogBuilder.setTitle("Error").setMessage(message).setNeutralButton("OK", new DialogInterface.OnClickListener() {
+         dialogBuilder.setMessage(message).setNeutralButton("OK", new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {
                  //empty
              }
          }).show();
+     }
+
+     private void sendMail(String email, String password){
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Hostelers Login Password");
+        intent.putExtra(Intent.EXTRA_TEXT, "Your Password: "+password);
+        if(intent.resolveActivity(getPackageManager())!=null){
+            startActivity(intent);
+        }
      }
 }
