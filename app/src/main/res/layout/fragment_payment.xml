@@ -29,7 +29,7 @@
                 android:text="@string/hostel_payment_choice1" />
 
             <RadioButton
-                android:id="@+id/hostel_pay_quaterly"
+                android:id="@+id/hostel_pay_quarterly"
                 style="@style/payments_radio_button"
                 android:text="@string/hostel_payment_choice2" />
 
@@ -39,7 +39,7 @@
                 android:text="@string/hostel_payment_choice3" />
         </RadioGroup>
 
-        <TextView
+        <!--<TextView
             android:id="@+id/fee_payment_opt"
             style="@style/heading_style"
             android:text="@string/Fee_payment_text" />
@@ -69,7 +69,15 @@
             android:id="@+id/g_pay_image"
             style="@style/fee_payment_image_view_Style"
             android:contentDescription="@string/google_pay_content_description"
-            android:src="@drawable/google_pay_drawable" />
+            android:src="@drawable/google_pay_drawable" />-->
+        <Button
+            android:id = "@+id/make_payment_button"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/button_color"
+            android:textColor="@color/button_text_color"
+            android:text="@string/make_payment"/>
 
     </LinearLayout>
 </ScrollView>

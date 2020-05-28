@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +20,10 @@ import android.widget.Toast;
 import com.example.hostelers.backend.HostelSignUpResult;
 import com.example.hostelers.backend.RetrofitInterface;
 import com.example.hostelers.R;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -31,6 +37,9 @@ public class HostelSignUpActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://10.0.2.2:3000";
+    private int IMAGE_REQUEST = 1;
+    private Bitmap imageBitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +48,7 @@ public class HostelSignUpActivity extends AppCompatActivity {
         retrofitInterface = retrofit.create(RetrofitInterface.class);
         final EditText hostelName = findViewById(R.id.hostel_name), hostelLocation = findViewById(R.id.location), hostelWarden = findViewById(R.id.warden_name);
         final EditText emailWarden = findViewById(R.id.warden_email_hostelSignUp), mobile = findViewById(R.id.warden_mobile_hostelSignup);
-        Button submit = findViewById(R.id.hostel_signUp_submit);
+        final Button submit = findViewById(R.id.hostel_signUp_submit), uploadButton = findViewById(R.id.doc_upload_btn);
         MyEditTextListener myTextListener = new MyEditTextListener();
         hostelName.setOnEditorActionListener(myTextListener);
         hostelLocation.setOnEditorActionListener(myTextListener);
@@ -51,7 +60,7 @@ public class HostelSignUpActivity extends AppCompatActivity {
                 if(email.isEmpty()){
                     emailWarden.setError("Mandatory: Can't be Empty.");
                 }else{
-                    if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@[\\w.]{3,10}",email)){
+                    if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@\\w{3,10}\\.com",email)){
                         emailWarden.setError("Mandatory: email invalid");
                     }
                 }
@@ -72,6 +81,20 @@ public class HostelSignUpActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        uploadButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent getImageIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                getImageIntent.setType("image/*");
+                getImageIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                if(getImageIntent.resolveActivity(getPackageManager()) != null){
+                    startActivityForResult(getImageIntent, IMAGE_REQUEST);
+                }
+            }
+        });
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +116,7 @@ public class HostelSignUpActivity extends AppCompatActivity {
                     emailWarden.setError("Mandatory: Can't be Empty.");
                     flag = false;
                 }else{
-                    if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@[\\w.]{4,20}",email)){
+                    if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@\\w{3,10}\\.com",email)){
                         emailWarden.setError("Mandatory: email invalid");
                     }
                 }
@@ -105,6 +128,17 @@ public class HostelSignUpActivity extends AppCompatActivity {
                         mobile.setError("Mandatory: should have 10 digits");
                     }
                 }
+                if(imageBitmap == null){
+                    Snackbar.make(uploadButton, "Please Upload the proof for Hostel", Snackbar.LENGTH_LONG).show();
+                    flag = false;
+                }
+                else{
+                    int size = (imageBitmap.getHeight()*imageBitmap.getWidth()*3)/1024;
+                    if(size <= 5000){
+                        Snackbar.make(uploadButton, "The uploaded image size should be less than 150kb", Snackbar.LENGTH_LONG).show();
+                        flag = false;
+                    }
+                }
                 if (flag) {
                     HashMap<String, String> details = new HashMap<>();
                     details.put("hostelName",hostelName_text);
@@ -112,6 +146,7 @@ public class HostelSignUpActivity extends AppCompatActivity {
                     details.put("wardenName", wardenName);
                     details.put("wardenEmail", email);
                     details.put("wardenNumber", mobile_num);
+                    details.put("hostelDocument", imageToString());
                     Call<HostelSignUpResult> hostelDetails = retrofitInterface.executeHostelSignUp(details);
                     hostelDetails.enqueue(new Callback<HostelSignUpResult>() {
                         @Override
@@ -137,6 +172,28 @@ public class HostelSignUpActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String imageToString(){
+        ByteArrayOutputStream byteOutputStream = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG,30, byteOutputStream);
+        byte[] imagesBytes = byteOutputStream.toByteArray();
+        return Base64.encodeToString(imagesBytes, Base64.DEFAULT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
+            Uri img = data.getData();
+            try {
+                imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), img);
+                ((TextView)findViewById(R.id.hostel_doc_proof_tv)).setText(img.getLastPathSegment()+".jpeg");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void openAlertDialog(String message){

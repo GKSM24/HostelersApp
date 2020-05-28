@@ -14,7 +14,7 @@
 
         <!-- TODO: Update fragment layout -->
         <EditText
-            android:id="@+id/boardername"
+            android:id="@+id/boarder_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -26,7 +26,7 @@
 
 
         <EditText
-            android:id="@+id/fathername"
+            android:id="@+id/father_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

@@ -48,15 +48,16 @@ public class BoarderSignInActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BoarderSignInActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(BoarderSignInActivity.this, SignUpActivity.class), fromIntent = getIntent();
+                intent.putExtra("hostelName", fromIntent.getStringExtra("hostelName"));
+                intent.putExtra("hostelLocation", fromIntent.getStringExtra("hostelLocation"));
                 startActivity(intent);
             }
         });
         forgot_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BoarderSignInActivity.this, ChangePasswordActivity.class);
-                startActivity(intent);
+                // send the current password
             }
         });
     }

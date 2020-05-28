@@ -3,7 +3,6 @@
     package="com.example.hostelers">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -17,15 +16,15 @@
         <activity
             android:name=".ui.BoarderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.HostelSignUpActivity" />
-        <activity android:name=".ui.InitialActivity" />
-        <activity android:name=".ui.SignUpActivity" />
-        <activity android:name=".ui.ChangePasswordActivity" />
-        <activity android:name=".ui.SelectUserActivity" />
-        <activity android:name=".ui.BoarderSignInActivity" />
-        <activity android:name=".ui.AdminLoginActivity" />
-        <activity android:name=".ui.HostelListActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.HostelSignUpActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.InitialActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.SignUpActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.ChangePasswordActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.SelectUserActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.BoarderSignInActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.AdminLoginActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.HostelListActivity" android:screenOrientation="nosensor"/>
+        <activity android:name=".ui.MainActivity" android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

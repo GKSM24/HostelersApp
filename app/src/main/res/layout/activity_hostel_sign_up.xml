@@ -51,13 +51,13 @@
                 android:textSize="18sp"
                 tools:ignore="RelativeOverlap" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/doc_upload_btn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="@color/button_color"
+                android:text = "@string/document_upload"
                 android:contentDescription="@string/hostel_upload_description"
                 android:src="@android:drawable/stat_sys_upload" />
 

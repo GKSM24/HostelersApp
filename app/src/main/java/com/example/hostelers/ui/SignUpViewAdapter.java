@@ -1,19 +1,31 @@
 package com.example.hostelers.ui;
 
+import android.app.AlertDialog;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
+import com.example.hostelers.R;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 
-public class SignUpAdapter extends FragmentPagerAdapter {
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
+public class SignUpViewAdapter extends FragmentPagerAdapter{
 
     private ArrayList<Fragment> fragmentList = new ArrayList<>();
     private ArrayList<String> fragmentTitle = new ArrayList<>();
 
-    public SignUpAdapter(@NonNull FragmentManager fm) {
+
+    public SignUpViewAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
 
@@ -39,4 +51,5 @@ public class SignUpAdapter extends FragmentPagerAdapter {
         fragmentList.add(fragment);
         fragmentTitle.add(title);
     }
+
 }

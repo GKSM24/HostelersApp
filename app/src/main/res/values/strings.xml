@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Basic Activities Strings-->
     <string name="app_name">Hostelers</string>
     <string name="hostel_list_btn_text">Hostel\'s List</string>
@@ -23,10 +23,11 @@
 
     <!-- Hostel Sign Up-->
     <string name="hostel_name_text"> Hostel Name </string>
-    <string name="hostel_proof_text"> <b>Add document proof</b>\n(.jpeg or .png) </string>
+    <string name="hostel_proof_text"><b>Add document image for proof</b>\nFile size less than 150KB </string>
     <string name="hostel_location_text"> Hostel Location </string>
     <string name="hostel_warden_name">Warden/Owner Name</string>
     <string name="hostel_upload_description">Upload Hostel Proof Document</string>
+    <string name = "document_upload">Choose File</string>
 
 
     <!-- Sign Up Activity Strings-->
@@ -55,13 +56,32 @@
 
     <!-- rules tab strings-->
     <string name="agreement_text">I agree to the above rules</string>
+    <string name="rules_text_view">Rules</string>
     <string name="hostel_rules_text_view">Hostel Rules</string>
-    <string name="rules_content">Some Rules</string>
+    <string name="rules_content">
+        * No Outside Food Allowed
+        \n* Not outsiders Allowed to the Hostel
+        \n* Don\'t waste Food\n* Food is available 3 times a day
+        \n* Food cannot be taken to the Room
+        \n* Don\'t waste water\n* Hostel Gates are closed by 10pm
+        \n* Timings of food may change
+        \n* Hostel bill must be paid on time
+        \n* Option to pay bill online
+    </string>
+    <string name="payment_rules_heading">Payment Rules</string>
+    <string name = "payment_rules_content">
+    Bill is generated on payment choice
+    \nBill is available on joining date
+    \nBill includes food and monthly rent
+    \n* Monthly payment:Rs 2500/-
+    \n* Quarterly payment:Rs 7500/-
+    \n* Annual payment:Rs 30000/-
+    </string>
 
     <!-- id proofs strings-->
     <string name="id_proofs_heading">Attach ID Proofs</string>
-    <string name="id_proofs_rules">* ATTACH EITHER AADHAAR OR PAN CARD IMAGE FILE\n* ATTACH A PHOTOGRAPH IMAGE</string>
-    <string name="id_proofs_note">**<b><u>Note:</u></b> The files must be less than 1MB</string>
+    <string name="id_proofs_rules">* ATTACH EITHER AADHAAR OR PAN CARD IMAGE FILE\n* ATTACH A PHOTOGRAPH IMAGE FILE</string>
+    <string name="id_proofs_note">**<b><u>Note:</u></b>\n\tThe id proof must be less than 150kb.\n\tThe photograph(passport size) must be less than 40kb.</string>
 
     <string-array name="id_proofs_values">
         <item>PAN CARD</item>
@@ -80,6 +100,7 @@
     <string name="phonepe_content_description">Click on this image for Payment Through Phonepe</string>
     <string name="stripe_content_description">Click on this image for Payment Through Paytm</string>
     <string name="google_pay_content_description">Click on this image for Payment Through Paytm</string>
+    <string name = "make_payment">Make Payment</string>
 
     <!-- Tool bar spinner values -->
     <string-array name="toolbar_spinner">
@@ -125,4 +146,7 @@
     <string name = "message_text">Enter Message</string>
     <string name = "message_button_text">Send Message</string>
     <string name = "generic_message_text">Please contact me personally. I need to talk to you.</string>
+
+    <string name = "boarder_signUp_email_text"><i>Thank you for choosing Hostelers App</i> <b><xliff:g id = "name" example = "XXX">%s</xliff:g></b>\nThis is your id: <xliff:g id = "b_id" example = "1234">%s</xliff:g>\n\nYou can use the id to verify with your warden and ask about the status of your application.\n\nHere is the <xliff:g id = "hostelName" example = "XYZ">%s</xliff:g> warden details\n<b>Warden Name:</b> <xliff:g id = "wardenName" example = "ABC">%s</xliff:g>\n<b>Warden Mobile Number:</b> <xliff:g id = "wardenMobile" example = "1234567890">%s</xliff:g>\n<b>Warden Email:</b> <xliff:g id = "wardenEmail" example = "abc@example.com">%s</xliff:g>\n\nHope, you\'ll have a pleasant stay. Thank you.</string>
+
 </resources>

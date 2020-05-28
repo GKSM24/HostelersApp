@@ -5,15 +5,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.hostelers.R;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.regex.Pattern;
 
@@ -24,33 +27,7 @@ import java.util.regex.Pattern;
  * create an instance of this fragment.
  */
 public class FormFragment extends Fragment {
-    @Override
-    public void onPause() {
-        super.onPause();
-        View view = requireView();
-        final EditText b_name = view.findViewById(R.id.boardername), b_father_name = view.findViewById(R.id.fathername), b_email = view.findViewById(R.id.email), b_mobile = view.findViewById(R.id.mobile_number);
-        String name = b_name.getText().toString(),father_name = b_father_name.getText().toString(), email = b_email.getText().toString(), mobile_num = b_mobile.getText().toString();
-        if(name.isEmpty()){
-            b_name.setError("Mandatory: Can't be Empty.");
-        }
-        if(father_name.isEmpty()){
-            b_father_name.setError("Mandatory: Can't be Empty.");
-        }
-        if(email.isEmpty()){
-            b_email.setError("Mandatory: Can't be Empty.");
-        }else{
-            if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@[\\w.]{3,10}",email)){
-                b_email.setError("Mandatory: email invalid");
-            }
-        }
-        if(mobile_num.isEmpty()){
-            b_mobile.setError("Mandatory: Can't be Empty.");
-        }else{
-            if (mobile_num.length() != 10){
-                b_mobile.setError("Mandatory: should have 10 digits");
-            }
-        }
-    }
+
 
     public FormFragment() {
         // Required empty public constructor
@@ -83,27 +60,37 @@ public class FormFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        final EditText b_name = view.findViewById(R.id.boardername), b_father_name = view.findViewById(R.id.fathername), b_email = view.findViewById(R.id.email), b_mobile = view.findViewById(R.id.mobile_number);
-        MyEditTextListener listener = new MyEditTextListener();
-        b_name.setOnEditorActionListener(listener);
-        b_father_name.setOnEditorActionListener(listener);
-        b_email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        final EditText b_name = view.findViewById(R.id.boarder_name), b_father_name = view.findViewById(R.id.father_name), b_email = view.findViewById(R.id.email), b_mobile = view.findViewById(R.id.mobile_number);
+        b_name.setOnFocusChangeListener(new View.OnFocusChangeListener(){
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            public void onFocusChange(View view, boolean onChange){
+                if(b_name.getText().toString().isEmpty())
+                    b_name.setError("Mandatory: Can't be Empty.");
+            }
+        });
+        b_father_name.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View view, boolean onChange){
+                if(b_father_name.getText().toString().isEmpty())
+                    b_father_name.setError("Mandatory: Can't be Empty.");
+            }
+        });
+        b_email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
                 String email = b_email.getText().toString();
                 if(email.isEmpty()){
                     b_email.setError("Mandatory: Can't be Empty.");
                 }else{
-                    if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@[\\w.]{3,10}",email)){
+                    if (!Pattern.matches("^[\\w$^*&#!][\\w$^*&#!.@]{0,63}@\\w{3,10}\\.com",email)){
                         b_email.setError("Mandatory: email invalid");
                     }
                 }
-                return true;
             }
         });
-        b_mobile.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        b_mobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            public void onFocusChange(View v, boolean hasFocus) {
                 String mobile_num = b_mobile.getText().toString();
                 if(mobile_num.isEmpty()){
                     b_mobile.setError("Mandatory: Can't be Empty.");
@@ -112,7 +99,6 @@ public class FormFragment extends Fragment {
                         b_mobile.setError("Mandatory: should have 10 digits");
                     }
                 }
-                return true;
             }
         });
     }

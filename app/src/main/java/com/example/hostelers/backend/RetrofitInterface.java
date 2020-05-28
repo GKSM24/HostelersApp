@@ -5,18 +5,27 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RetrofitInterface {
+    @FormUrlEncoded
     @POST("/hostelSignUp")
-    Call<HostelSignUpResult> executeHostelSignUp(@Body HashMap<String, String> signUpDetails);
+    Call<HostelSignUpResult> executeHostelSignUp(@FieldMap HashMap<String, String> signUpDetails);
+
+    @FormUrlEncoded
+    @POST("/boarderSignUp")
+    Call<BoarderSignUpResult> executeBoarderSignUp(@FieldMap HashMap<String, String> boarderDetails);
 
     @POST("/wardenSignIn")
     Call<WardenSignInResult> executeWardenSignIn(@Body HashMap<String, String> wardenCredentials);
 
-    @POST("/change_password")
+    @PUT("/change_password")
     Call<Void> executeChangePassword(@Body HashMap<String, String> passwordDetails);
 
     @POST("/hostel_list")

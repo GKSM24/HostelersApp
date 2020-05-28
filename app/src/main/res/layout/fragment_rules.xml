@@ -8,29 +8,57 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        style = "@style/heading_style"
+        style="@style/heading_style"
         android:layout_gravity="center_horizontal"
-        android:text="@string/hostel_rules_text_view" />
+        android:text="@string/rules_text_view"
+        />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        >
-    <TextView
-        android:id = "@+id/rules_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text = "@string/rules_content"
-        android:textSize = "24sp"
-        android:layout_gravity = "center"
-        android:gravity="center"/>
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hostel_rules_heading_text_view"
+                style="@style/heading_style"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/hostel_rules_text_view" />
+            <TextView
+                android:id="@+id/hostel_rules_content_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rules_content"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id = "@+id/payment_rules_heading_tv"
+                style = "@style/heading_style"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_rules_heading"
+                />
+            <TextView
+                android:id = "@+id/payment_rules_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="@string/payment_rules_content"
+                android:layout_marginBottom="16dp"
+                />
+        </LinearLayout>
     </ScrollView>
+
     <CheckBox
-        android:id = "@+id/rules_agreement_check"
+        android:id="@+id/rules_agreement_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text = "@string/agreement_text"
-        android:paddingLeft = "16dp"/>
+        android:paddingLeft="16dp"
+        android:text="@string/agreement_text"
+        android:textSize="18sp" />
 </LinearLayout>
