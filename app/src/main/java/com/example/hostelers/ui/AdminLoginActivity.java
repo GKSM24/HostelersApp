@@ -99,7 +99,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                 if(flag){
                     Intent fromIntent = getIntent();
                     String hostelName = fromIntent.getStringExtra("hostelName"), hostelLocation = fromIntent.getStringExtra("hostelLocation");
-                    Call<ForgotPasswordResult> call = retrofitInterface.executeForgotPassword(hostelLocation, hostelName, id);
+                    Call<ForgotPasswordResult> call = retrofitInterface.executeWardenForgotPassword(hostelLocation, hostelName, id);
                     call.enqueue(new Callback<ForgotPasswordResult>() {
                         @Override
                         public void onResponse(Call<ForgotPasswordResult> call, Response<ForgotPasswordResult> response) {
