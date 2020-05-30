@@ -2,7 +2,9 @@ package com.example.hostelers.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -105,7 +107,7 @@ public class BoarderSignInActivity extends AppCompatActivity {
 
     private void validateCredentials(String id, String pwd){
         Intent fromIntent = getIntent();
-        HashMap<String, String> credentials = new HashMap<>();
+        final HashMap<String, String> credentials = new HashMap<>();
         credentials.put("hostelName", fromIntent.getStringExtra("hostelName"));
         credentials.put("hostelLocation", fromIntent.getStringExtra("hostelLocation"));
         credentials.put("boarderId", id);
@@ -117,9 +119,11 @@ public class BoarderSignInActivity extends AppCompatActivity {
                 int response_code = response.code();
                 if(response_code == 200){
                     BoarderSignInResult result = response.body();
+                    String bName = result.getBoarderName(), bId = result.getBoarderId();
+                    createSession(bId, credentials.get("hostelName"), credentials.get("hostelLocation"));
                     Intent intent = new Intent(BoarderSignInActivity.this, BoarderActivity.class);
-                    intent.putExtra("boarderName", result.getBoarderName());
-                    intent.putExtra("boarderId", result.getBoarderId());
+                    intent.putExtra("boarderName", bName);
+                    intent.putExtra("boarderId", bId);
                     intent.putExtra("boarderPhoto", result.getBoarderPhoto());
                     Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
@@ -143,5 +147,14 @@ public class BoarderSignInActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_SUBJECT, "Forgot Password Request Hostelers");
         intent.putExtra(Intent.EXTRA_TEXT, "Your password: "+password);
         startActivity(intent);
+    }
+
+    private void createSession(String id, String hostelName, String hostelLocation){
+        SharedPreferences prefObj = getSharedPreferences("BoarderUser", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefObj.edit();
+        editor.putString("BoarderId", id);
+        editor.putString("HostelName", hostelName);
+        editor.putString("HostelLocation", hostelLocation);
+        editor.commit();
     }
 }

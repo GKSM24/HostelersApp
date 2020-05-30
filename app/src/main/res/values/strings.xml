@@ -11,6 +11,7 @@
     <string name="sign_up_text">Sign Up</string>
     <string name="sign_in_text">Sign In</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name = "change_password">Change Password</string>
     <string name="boarder_id_text">Enter Boarder Id</string>
     <string name="boarder_sign_in_text">Boarder Sign-in</string>
     <string name="warden_text">Warden</string>
@@ -104,6 +105,7 @@
 
     <!-- Tool bar spinner values -->
     <string-array name="toolbar_spinner">
+        <item></item>
         <item>Change Password</item>
         <item>Sign Out</item>
     </string-array>

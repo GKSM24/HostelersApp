@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id = "@+id/inside_layout_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/user_photo"
         android:layout_margin="8dp"
-        android:text = "Welcome, Boarder"
+        tools:text = "Welcome, Boarder"
         android:textColor="@android:color/white"
         android:textAppearance="?android:textAppearanceMedium"
         />
@@ -34,7 +35,7 @@
         android:layout_toRightOf="@id/user_photo"
         android:layout_below="@id/user_name_welcome_text"
         android:layout_marginLeft="8dp"
-        android:text = "Boarder ID"
+        tools:text = "Boarder ID"
         android:textColor="@android:color/white"
         android:textAppearance="?android:textAppearanceSmall"
         />

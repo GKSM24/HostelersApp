@@ -28,8 +28,11 @@ public interface RetrofitInterface {
     @POST("/boarderSignIn")
     Call<BoarderSignInResult> executeBoarderSignIn(@Body HashMap<String, String> boarderCredentials);
 
-    @PUT("/change_password")
-    Call<Void> executeChangePassword(@Body HashMap<String, String> passwordDetails);
+    @PUT("/boarder/change_password")
+    Call<Void> executeBoarderChangePassword(@Body HashMap<String, String> passwordDetails);
+
+    @PUT("/warden/change_password")
+    Call<Void> executeWardenChangePassword(@Body HashMap<String, String> passwordDetails);
 
     @POST("/hostel_list")
     Call<List<HostelListItem>> executeGetHostelList();

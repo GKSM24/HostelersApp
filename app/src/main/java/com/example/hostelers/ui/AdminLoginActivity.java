@@ -3,8 +3,10 @@ package com.example.hostelers.ui;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -56,7 +58,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                 }
                 if(flag){
                     Intent fromIntent = getIntent();
-                    HashMap<String, String> credentials = new HashMap<>();
+                    final HashMap<String, String> credentials = new HashMap<>();
                     credentials.put("hostelName", fromIntent.getStringExtra("hostelName"));
                     credentials.put("hostelLocation", fromIntent.getStringExtra("hostelLocation"));
                     credentials.put("wardenId", id);
@@ -68,9 +70,11 @@ public class AdminLoginActivity extends AppCompatActivity {
                             int response_code = response.code();
                             if(response_code == 200){
                                 WardenSignInResult result = response.body();
+                                String id = result.getWardenId();
+                                createSession(id, credentials.get("hostelName"), credentials.get("hostelLocation"));
                                 Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(AdminLoginActivity.this,WardenActivity.class);
-                                intent.putExtra("warden_id", result.getWardenId());
+                                intent.putExtra("warden_id", id);
                                 intent.putExtra("warden_name", result.getWardenName());
                                 startActivity(intent);
                             }
@@ -144,5 +148,14 @@ public class AdminLoginActivity extends AppCompatActivity {
         if(intent.resolveActivity(getPackageManager())!=null){
             startActivity(intent);
         }
+     }
+
+     private void createSession(String id, String hostel_name, String hostel_location){
+         SharedPreferences prefObj = getSharedPreferences("WardenUser", Context.MODE_PRIVATE);
+         SharedPreferences.Editor editor = prefObj.edit();
+         editor.putString("WardenId", id);
+         editor.putString("HostelName", hostel_name);
+         editor.putString("HostelLocation", hostel_location);
+         editor.commit();
      }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -29,14 +30,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://10.0.2.2:3000";
-
+    private Intent fromIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
-        final EditText id = findViewById(R.id.etId), new_password = findViewById(R.id.etPwd), confirm_password = findViewById(R.id.etRe_enterPwd);
+        fromIntent = getIntent();
+        final TextView id = findViewById(R.id.etId);
+        id.setText(fromIntent.getStringExtra("id"));
+        final EditText new_password = findViewById(R.id.etPwd), confirm_password = findViewById(R.id.etRe_enterPwd);
         Button submit = findViewById(R.id.btnSubmit);
         MyEditTextListener myTextListener = new MyEditTextListener();
         id.setOnEditorActionListener(myTextListener);
@@ -78,10 +82,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean flag = true;
                 String id_text = id.getText().toString(), new_password_text = new_password.getText().toString(), confirm_pwd_text = confirm_password.getText().toString();
-                if (id_text.isEmpty()) {
-                    id.setError("Mandatory: Can't be Empty.");
-                    flag = false;
-                }
+                String userType = fromIntent.getStringExtra("userType"), location = fromIntent.getStringExtra("hostelLocation"), h_name = fromIntent.getStringExtra("hostelName");
                 if (new_password_text.isEmpty()) {
                     new_password.setError("Mandatory: Can't be Empty.");
                     flag = false;
@@ -108,9 +109,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 }
                 if(flag){
                     HashMap<String, String> details = new HashMap<>();
+                    Call<Void> call;
                     details.put("id", id_text);
                     details.put("newPassword", new_password_text);
-                    Call<Void> call =  retrofitInterface.executeChangePassword(details);
+                    details.put("hostelLocation", location);
+                    details.put("hostelName", h_name);
+                    if(userType.equalsIgnoreCase("boarder")){
+                        call =  retrofitInterface.executeBoarderChangePassword(details);
+                    }
+                    else{
+                        call =  retrofitInterface.executeWardenChangePassword(details);
+                    }
                     call.enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
