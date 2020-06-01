@@ -15,7 +15,9 @@ import android.widget.TextView;
 import com.example.hostelers.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class WardenActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class WardenActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, ViewPager.OnPageChangeListener {
+    private ViewPager wardenViewPager;
+    private SharedPreferences prefObj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,11 @@ public class WardenActivity extends AppCompatActivity implements AdapterView.OnI
         Spinner menu = findViewById(R.id.user_menu_spinner);
         id_text_view.setText("ID: "+ fromIntent.getStringExtra("warden_id"));
         greeting_text_view.setText("Welcome, "+ fromIntent.getStringExtra("warden_name"));
+        prefObj = getSharedPreferences("WardenUser", Context.MODE_PRIVATE);
         menu.setOnItemSelectedListener(this);
         TabLayout tabs = findViewById(R.id.tabs_warden);
-        ViewPager wardenViewPager = findViewById(R.id.viewpager_warden);
+        wardenViewPager = findViewById(R.id.viewpager_warden);
+        wardenViewPager.setOnPageChangeListener(this);
         setViewPager(wardenViewPager);
         tabs.setupWithViewPager(wardenViewPager);
     }
@@ -43,7 +47,6 @@ public class WardenActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        SharedPreferences prefObj = getSharedPreferences("WardenUser", Context.MODE_PRIVATE);
         switch (position){
             case 1:
                 Intent intent = new Intent(this, ChangePasswordActivity.class);
@@ -64,6 +67,21 @@ public class WardenActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
     }
 }

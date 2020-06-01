@@ -1,10 +1,14 @@
 package com.example.hostelers.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -12,10 +16,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hostelers.R;
+import com.example.hostelers.backend.HostelBoardersListItemResult;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -56,35 +66,46 @@ public class WardenNotifyBoarderFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
-        final EditText bid = view.findViewById(R.id.et_notify_boarder_id), msg = view.findViewById(R.id.et_notify_msg);
-        MyEditTextListener listener = new MyEditTextListener();
-        bid.setOnEditorActionListener(listener);
-        msg.setOnEditorActionListener(listener);
-        Button sendMsg = view.findViewById(R.id.btn_send_msg);
-        sendMsg.setOnClickListener(new View.OnClickListener() {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        final ListView boardersList = view.findViewById(R.id.boarders_list);
+        SearchView boarderSearch = view.findViewById(R.id.boarder_search);
+        DataFetchViewModel fetchViewModel = new DataFetchViewModel();
+        SharedPreferences preferences = requireActivity().getSharedPreferences("WardenUser", Context.MODE_PRIVATE);
+        fetchViewModel.setData(preferences.getString("WardenId", null), preferences.getString("HostelName", null), preferences.getString("HostelLocation", null));
+        final LiveData<List<HostelBoardersListItemResult>> listLiveData = fetchViewModel.getData();
+        listLiveData.observe(getViewLifecycleOwner(), new Observer<List<HostelBoardersListItemResult>>() {
             @Override
-            public void onClick(View v) {
-                boolean flag = true;
-                String boarder_id = bid.getText().toString(), message = msg.getText().toString();
-                if(boarder_id.isEmpty()){
-                    bid.setError("Mandatory: Can't be empty. Enter Boarder Id");
-                    flag = false;
-                }
-                if(boarder_id.isEmpty()){
-                    msg.setText(R.string.generic_message_text);
-                }
-                if(flag){
-                    Toast.makeText(getContext(), "Message Sent!", Toast.LENGTH_LONG).show();
-                    refreshScreen(view);
-                }
+            public void onChanged(List<HostelBoardersListItemResult> hostelBoardersListItemResults) {
+                BoarderListAdapter adapter = new BoarderListAdapter(getContext(), hostelBoardersListItemResults);
+                boardersList.setAdapter(adapter);
             }
         });
+        boarderSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-    }
-    private void refreshScreen(View view){
-        EditText bid = view.findViewById(R.id.et_notify_boarder_id), msg = view.findViewById(R.id.et_notify_msg);
-        bid.setText("");
-        msg.setText("");
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                List<HostelBoardersListItemResult> list = listLiveData.getValue();
+                BoarderListAdapter searchAdapter;
+                if(!newText.isEmpty()) {
+                    ArrayList<HostelBoardersListItemResult> searchList = new ArrayList<>();
+                    for (HostelBoardersListItemResult item : list) {
+                        String name = item.getName().toLowerCase();
+                        newText = newText.toLowerCase();
+                        if (name.contains(newText))
+                            searchList.add(item);
+                    }
+                    searchAdapter = new BoarderListAdapter(getContext(), searchList);
+                }
+                else{
+                    searchAdapter = new BoarderListAdapter(getContext(), list);
+                }
+                boardersList.setAdapter(searchAdapter);
+                return true;
+            }
+        });
     }
 }

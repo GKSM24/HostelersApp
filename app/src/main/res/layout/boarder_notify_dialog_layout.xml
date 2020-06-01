@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/warden_notify_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_boarder_msg_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="24dp"
+        android:text="@string/message_heading"
+        android:textColor="@android:color/black"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tv_notify_boarder_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:drawableStart="@drawable/face_id"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textSize="24sp"
+        tools:text="ID" />
+
+    <EditText
+        android:id="@+id/et_notify_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:autofillHints="Fee Payment"
+        android:drawableStart="@drawable/message"
+        android:drawablePadding="8dp"
+        android:hint="@string/message_text"
+        android:inputType="text"
+        android:maxLines="3" />
+
+</LinearLayout>

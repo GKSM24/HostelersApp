@@ -1,5 +1,6 @@
 package com.example.hostelers.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -20,7 +21,8 @@ import android.widget.TextView;
 import com.example.hostelers.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class BoarderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class BoarderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, ViewPager.OnPageChangeListener  {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class BoarderActivity extends AppCompatActivity implements AdapterView.On
         id.setText("ID: "+ fromIntent.getStringExtra("boarderId"));
         name.setText("Welcome, "+ fromIntent.getStringExtra("boarderName"));
         photo.setImageBitmap(stringToImage(fromIntent.getStringExtra("boarderPhoto")));
+        boarderViewPager.setOnPageChangeListener(this);
         menu.setOnItemSelectedListener(this);
         setViewPager(boarderViewPager);
         tabs.setupWithViewPager(boarderViewPager);
@@ -77,6 +80,21 @@ public class BoarderActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+        //empty
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
     }
 }
