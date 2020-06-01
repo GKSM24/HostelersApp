@@ -43,7 +43,7 @@ public interface RetrofitInterface {
     @GET("/boarderSignIn/{hostelLocation}/{hostelName}/{boarderId}")
     Call<ForgotPasswordResult> executeBoarderForgotPassword(@Path("hostelLocation") String location, @Path("hostelName") String name, @Path("boarderId") String id);
 
-    @GET("/boarder_list/{hostelName}/{hostelLocation}/{boarderId}")
-    Call<List<HostelBoardersListItemResult>> executeFetchBoarderList( @Path("hostelName") String name, @Path("hostelLocation") String location, @Path("boarderId") String id);
+    @GET("/warden/boarder_list/{hostelName}/{hostelLocation}")
+    Call<List<HostelBoardersListItemResult>> executeFetchBoarderList( @Path("hostelName") String name, @Path("hostelLocation") String location);
 
 }

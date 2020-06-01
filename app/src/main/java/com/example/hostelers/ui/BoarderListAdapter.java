@@ -35,8 +35,9 @@ public class BoarderListAdapter extends ArrayAdapter<HostelBoardersListItemResul
 
         HostelBoardersListItemResult item = getItem(position);
 
-        final TextView id = resultView.findViewById(R.id.boarder_id_notify), name = resultView.findViewById(R.id.boarder_name_notify);
-        id.setText(item.getId());
+        TextView id = resultView.findViewById(R.id.boarder_id_notify), name = resultView.findViewById(R.id.boarder_name_notify);
+        final String id_text = item.getId();
+        id.setText(id_text.substring(id_text.length()-8));
         name.setText(item.getName());
 
         Button notifyButton = resultView.findViewById(R.id.notifyBtn);
@@ -45,7 +46,7 @@ public class BoarderListAdapter extends ArrayAdapter<HostelBoardersListItemResul
             public void onClick(View v) {
                 View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.boarder_notify_dialog_layout, null);
                 TextView id_text_view = dialogView.findViewById(R.id.tv_notify_boarder_id);
-                id_text_view.setText(id.getText().toString());
+                id_text_view.setText(id_text);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
                 dialogBuilder.setView(dialogView)
                             .setPositiveButton("Send Message", new DialogInterface.OnClickListener() {

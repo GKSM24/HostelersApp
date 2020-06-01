@@ -71,7 +71,7 @@ public class WardenNotifyBoarderFragment extends Fragment {
         SearchView boarderSearch = view.findViewById(R.id.boarder_search);
         DataFetchViewModel fetchViewModel = new DataFetchViewModel();
         SharedPreferences preferences = requireActivity().getSharedPreferences("WardenUser", Context.MODE_PRIVATE);
-        fetchViewModel.setData(preferences.getString("WardenId", null), preferences.getString("HostelName", null), preferences.getString("HostelLocation", null));
+        fetchViewModel.setData(preferences.getString("HostelName", null), preferences.getString("HostelLocation", null));
         final LiveData<List<HostelBoardersListItemResult>> listLiveData = fetchViewModel.getData();
         listLiveData.observe(getViewLifecycleOwner(), new Observer<List<HostelBoardersListItemResult>>() {
             @Override

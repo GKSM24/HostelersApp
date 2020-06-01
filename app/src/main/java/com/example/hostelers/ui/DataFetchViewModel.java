@@ -1,7 +1,5 @@
 package com.example.hostelers.ui;
 
-import android.content.SharedPreferences;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -25,10 +23,10 @@ public class DataFetchViewModel extends ViewModel {
         return listData;
     }
 
-    public void setData(String id, String hostelName, String hostelLocation){
+    public void setData(String hostelName, String hostelLocation){
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-        Call<List<HostelBoardersListItemResult>> call = retrofitInterface.executeFetchBoarderList(hostelName, hostelLocation, id);
+        Call<List<HostelBoardersListItemResult>> call = retrofitInterface.executeFetchBoarderList(hostelName, hostelLocation);
         call.enqueue(new Callback<List<HostelBoardersListItemResult>>() {
             @Override
             public void onResponse(Call<List<HostelBoardersListItemResult>> call, Response<List<HostelBoardersListItemResult>> response) {
