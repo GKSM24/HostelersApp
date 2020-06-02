@@ -5,6 +5,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -49,4 +50,9 @@ public interface RetrofitInterface {
     @PUT("/notify_boarder")
     Call<Void> executeNotifyBoarder(@Body HashMap<String, String> msgDetails);
 
+    @GET("/boarder_notifications/{hostelName}/{hostelLocation}/{boarderId}")
+    Call<List<BoarderNotificationItemResult>> getBoarderNotifications(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("boarderId") String boarderId);
+
+    @DELETE("/boarder_notifications/delete_notification/{hostelName}/{hostelLocation}/{boarderId}/{notification_position}")
+    Call<Void> deleteBoarderNotification(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("boarderId") String boarderId, @Path("notification_position") int position);
 }

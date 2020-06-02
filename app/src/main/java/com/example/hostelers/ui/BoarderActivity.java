@@ -22,13 +22,13 @@ import com.example.hostelers.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class BoarderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, ViewPager.OnPageChangeListener  {
-
+    private ViewPager boarderViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boarder);
         TabLayout tabs = findViewById(R.id.tabs_boarder);
-        ViewPager boarderViewPager = findViewById(R.id.viewpager_boarder);
+        boarderViewPager = findViewById(R.id.viewpager_boarder);
         TextView name = findViewById(R.id.user_name_welcome_text), id = findViewById(R.id.user_id_text);
         ImageView photo = findViewById(R.id.user_photo);
         Spinner menu = findViewById(R.id.user_menu_spinner);
