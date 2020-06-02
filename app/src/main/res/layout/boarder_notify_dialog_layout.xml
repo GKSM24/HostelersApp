@@ -24,7 +24,7 @@
         android:drawableStart="@drawable/face_id"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:textSize="24sp"
+        android:textSize="18sp"
         tools:text="ID" />
 
     <EditText

@@ -46,4 +46,7 @@ public interface RetrofitInterface {
     @GET("/warden/boarder_list/{hostelName}/{hostelLocation}")
     Call<List<HostelBoardersListItemResult>> executeFetchBoarderList( @Path("hostelName") String name, @Path("hostelLocation") String location);
 
+    @PUT("/notify_boarder")
+    Call<Void> executeNotifyBoarder(@Body HashMap<String, String> msgDetails);
+
 }

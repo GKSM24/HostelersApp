@@ -69,7 +69,7 @@ public class WardenNotifyBoarderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final ListView boardersList = view.findViewById(R.id.boarders_list);
         SearchView boarderSearch = view.findViewById(R.id.boarder_search);
-        DataFetchViewModel fetchViewModel = new DataFetchViewModel();
+        final DataFetchViewModel fetchViewModel = new DataFetchViewModel();
         SharedPreferences preferences = requireActivity().getSharedPreferences("WardenUser", Context.MODE_PRIVATE);
         fetchViewModel.setData(preferences.getString("HostelName", null), preferences.getString("HostelLocation", null));
         final LiveData<List<HostelBoardersListItemResult>> listLiveData = fetchViewModel.getData();
@@ -88,23 +88,8 @@ public class WardenNotifyBoarderFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                List<HostelBoardersListItemResult> list = listLiveData.getValue();
-                BoarderListAdapter searchAdapter;
-                if(!newText.isEmpty()) {
-                    ArrayList<HostelBoardersListItemResult> searchList = new ArrayList<>();
-                    for (HostelBoardersListItemResult item : list) {
-                        String name = item.getName().toLowerCase();
-                        newText = newText.toLowerCase();
-                        if (name.contains(newText))
-                            searchList.add(item);
-                    }
-                    searchAdapter = new BoarderListAdapter(getContext(), searchList);
-                }
-                else{
-                    searchAdapter = new BoarderListAdapter(getContext(), list);
-                }
-                boardersList.setAdapter(searchAdapter);
-                return true;
+                fetchViewModel.executeSearchData(newText);
+                return false;
             }
         });
     }

@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".ui.WardenNotifyBoarderFragment">
 
+    <TextView
+        style="@style/heading_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text = "@string/boarder_list_heading_text"
+        />
+
     <SearchView
         android:id="@+id/boarder_search"
         android:layout_width="match_parent"
@@ -17,6 +25,7 @@
     <ListView
         android:id="@+id/boarders_list"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"/>
 
 </LinearLayout>
