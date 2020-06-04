@@ -2,29 +2,49 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hostelers">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.WardenActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.WardenActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.BoarderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.HostelSignUpActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.InitialActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.SignUpActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.ChangePasswordActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.SelectUserActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.BoarderSignInActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.AdminLoginActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.HostelListActivity" android:screenOrientation="nosensor"/>
-        <activity android:name=".ui.MainActivity" android:screenOrientation="nosensor">
+        <activity
+            android:name=".ui.HostelSignUpActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.InitialActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.SignUpActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.ChangePasswordActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.SelectUserActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.BoarderSignInActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.AdminLoginActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.HostelListActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

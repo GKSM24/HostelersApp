@@ -144,7 +144,6 @@ public class IdProofsFragment extends Fragment {
                 } else if (requestCode == IMG_PROOF_REQ_CODE) {
                     Bitmap proof = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), path);
                     int size = (proof.getWidth()*proof.getHeight()*3)/1024;
-                    System.out.println(size);
                     if (size <= 5000) {
                         viewModelProof.setImage(proof);
                         Toast.makeText(activity, "File " + path.getLastPathSegment() + " is attached", Toast.LENGTH_LONG).show();

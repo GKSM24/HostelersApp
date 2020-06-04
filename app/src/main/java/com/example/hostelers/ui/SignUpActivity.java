@@ -283,9 +283,9 @@ public class SignUpActivity extends AppCompatActivity implements ViewPager.OnPag
     private void sendMail(BoarderSignUpResult result){
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        String name = result.getBoarderName(), id = result.getBoarderId(), h_name = result.getHostelName(), w_name = result.getWardenName();
+        String name = result.getBoarderName(), id = result.getBoarderId(), pwd = result.getBoarderPassword(),h_name = result.getHostelName(), w_name = result.getWardenName();
         String w_number = result.getWardenMobile(), w_email = result.getWardenEmail(), b_email = result.getBoarderEmail();
-        String text = getString(R.string.boarder_signUp_email_text, name, id, h_name, w_name, w_number, w_email);
+        String text = getString(R.string.boarder_signUp_email_text, name, id, pwd, h_name, w_name, w_number, w_email);
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{b_email});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Welcome to Hostelers!");
         intent.putExtra(Intent.EXTRA_TEXT, text);

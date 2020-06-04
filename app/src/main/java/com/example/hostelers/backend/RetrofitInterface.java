@@ -1,5 +1,6 @@
 package com.example.hostelers.backend;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,4 +56,10 @@ public interface RetrofitInterface {
 
     @DELETE("/boarder_notifications/delete_notification/{hostelName}/{hostelLocation}/{boarderId}/{notification_position}")
     Call<Void> deleteBoarderNotification(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("boarderId") String boarderId, @Path("notification_position") int position);
+
+    @GET("/warden/boarder_admissions/{hostelName}/{hostelLocation}/{wardenId}")
+    Call<ArrayList<AdmissionsResult>> getAdmissionsList(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("wardenId") String wardenId);
+
+    @PUT("/warden/boarder_allocate_room")
+    Call<Void> updateRoomStatusForBoarder(@Body HashMap<String, String> details);
 }

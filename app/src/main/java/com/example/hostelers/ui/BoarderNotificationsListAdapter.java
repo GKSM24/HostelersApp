@@ -35,7 +35,6 @@ public class BoarderNotificationsListAdapter extends ArrayAdapter<BoarderNotific
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://10.0.2.2:3000";
-    boolean deleteResult = false;
 
     public BoarderNotificationsListAdapter(Context context, List<BoarderNotificationItemResult> list){
         super(context, 0, list);
@@ -78,6 +77,7 @@ public class BoarderNotificationsListAdapter extends ArrayAdapter<BoarderNotific
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 deleteMessage(position);
+
                             }
                         }).show();
             }
@@ -94,7 +94,7 @@ public class BoarderNotificationsListAdapter extends ArrayAdapter<BoarderNotific
         return resultView;
     }
 
-    private boolean deleteMessage(final int position){
+    private void deleteMessage(final int position){
         SharedPreferences preferences = getContext().getSharedPreferences("BoarderUser", Context.MODE_PRIVATE);
         Call<Void> call = retrofitInterface.deleteBoarderNotification(preferences.getString("HostelName", null), preferences.getString("HostelLocation", null), preferences.getString("BoarderId", null), position);
         call.enqueue(new Callback<Void>() {
@@ -102,6 +102,8 @@ public class BoarderNotificationsListAdapter extends ArrayAdapter<BoarderNotific
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.code() == 200){
                     System.out.println("Message deleted!");
+                    remove(getItem(position));
+                    notifyDataSetChanged();
                 }
             }
 
@@ -110,6 +112,5 @@ public class BoarderNotificationsListAdapter extends ArrayAdapter<BoarderNotific
                 System.out.println("Connection Failure");
             }
         });
-        return deleteResult;
     }
 }

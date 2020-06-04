@@ -40,7 +40,7 @@ public class WardenActivity extends AppCompatActivity implements AdapterView.OnI
     public void setViewPager(ViewPager viewPager){
         WardenViewPagerAdapter adapter = new WardenViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(WardenNotificationsFragment.newInstance(), "Notifications");
-        adapter.addFragment(WardenNewAdmissionsFragment.newInstance(), "New Admissions");
+        adapter.addFragment(WardenNewAdmissionsFragment.newInstance(), "Admissions");
         adapter.addFragment(WardenNotifyBoarderFragment.newInstance(), "Notify Boarder");
         viewPager.setAdapter(adapter);
     }

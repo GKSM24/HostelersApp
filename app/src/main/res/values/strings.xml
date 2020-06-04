@@ -11,7 +11,7 @@
     <string name="sign_up_text">Sign Up</string>
     <string name="sign_in_text">Sign In</string>
     <string name="forgot_password">Forgot Password</string>
-    <string name = "change_password">Change Password</string>
+    <string name="change_password">Change Password</string>
     <string name="boarder_id_text">Enter Boarder Id</string>
     <string name="boarder_sign_in_text">Boarder Sign-in</string>
     <string name="warden_text">Warden</string>
@@ -28,7 +28,7 @@
     <string name="hostel_location_text"> Hostel Location </string>
     <string name="hostel_warden_name">Warden/Owner Name</string>
     <string name="hostel_upload_description">Upload Hostel Proof Document</string>
-    <string name = "document_upload">Choose File</string>
+    <string name="document_upload">Choose File</string>
 
 
     <!-- Sign Up Activity Strings-->
@@ -70,7 +70,7 @@
         \n* Option to pay bill online
     </string>
     <string name="payment_rules_heading">Payment Rules</string>
-    <string name = "payment_rules_content">
+    <string name="payment_rules_content">
     Bill is generated on payment choice
     \nBill is available on joining date
     \nBill includes food and monthly rent
@@ -101,7 +101,7 @@
     <string name="phonepe_content_description">Click on this image for Payment Through Phonepe</string>
     <string name="stripe_content_description">Click on this image for Payment Through Paytm</string>
     <string name="google_pay_content_description">Click on this image for Payment Through Paytm</string>
-    <string name = "make_payment">Make Payment</string>
+    <string name="make_payment">Make Payment</string>
 
     <!-- Tool bar spinner values -->
     <string-array name="toolbar_spinner">
@@ -144,15 +144,33 @@
 
 
     <!-- boarder notify tab -->
-    <string name = "message_heading">Message To Boarder</string>
-    <string name = "message_text">Enter Message</string>
-    <string name = "message_button_text">Send Message</string>
-    <string name = "generic_message_text">Please contact me personally. I need to talk to you.</string>
-    <string name = "search_hint">Search By Name</string>
-    <string name = "notify_text">Notify</string>
-    <string name = "boarder_list_heading_text">Boarders List</string>
+    <string name="message_heading">Message To Boarder</string>
+    <string name="message_text">Enter Message</string>
+    <string name="message_button_text">Send Message</string>
+    <string name="generic_message_text">Please contact me personally. I need to talk to you.</string>
+    <string name="search_hint">Search By Name</string>
+    <string name="notify_text">Notify</string>
+    <string name="boarder_list_heading_text">Boarders List</string>
 
-    <string name = "boarder_signUp_email_text"><i>Thank you for choosing Hostelers App</i> <b><xliff:g id = "name" example = "XXX">%s</xliff:g></b>\nThis is your id: <xliff:g id = "b_id" example = "1234">%s</xliff:g>\n\nYou can use the id to verify with your warden and ask about the status of your application.\n\nHere is the <xliff:g id = "hostelName" example = "XYZ">%s</xliff:g> warden details\n<b>Warden Name:</b> <xliff:g id = "wardenName" example = "ABC">%s</xliff:g>\n<b>Warden Mobile Number:</b> <xliff:g id = "wardenMobile" example = "1234567890">%s</xliff:g>\n<b>Warden Email:</b> <xliff:g id = "wardenEmail" example = "abc@example.com">%s</xliff:g>\n\nYou will get the password from the warden after the approval.\n\nHope, you\'ll have a pleasant stay. Thank you.</string>
+    <string name="boarder_signUp_email_text"><i>Thank you for choosing Hostelers App</i> <b><xliff:g example="XXX" id="name">%s</xliff:g></b>\nThis is your id: <xliff:g example="1234" id="b_id">%s</xliff:g>\nThis is your password: <xliff:g example="XYZ12345" id="b_pwd">%s</xliff:g>\n\nHere is the <xliff:g example="XYZ" id="hostelName">%s</xliff:g> warden details\n<b>Warden Name:</b> <xliff:g example="ABC" id="wardenName">%s</xliff:g>\n<b>Warden Mobile Number:</b> <xliff:g example="1234567890" id="wardenMobile">%s</xliff:g>\n<b>Warden Email:</b> <xliff:g example="abc@example.com" id="wardenEmail">%s</xliff:g>\n\nYou will get the room number from the warden to your mail.\n\nHope, you\'ll have a pleasant stay. Thank you.</string>
     <string name="from">From:</string>
     <string name="message_heading_text">Message</string>
+    <string name="show_details_text">Show Details</string>
+    <string name="boarder_name_heading">Name:</string>
+    <string name="boarder_id_heading">BoarderId:</string>
+    <string name="description_photo">photo</string>
+    <string name="description_id_proof">id_proof</string>
+    <string name="job_text">Job:</string>
+    <string name="father_name_text">Father Name:</string>
+    <string name="joining_date_heading_text">Joining Date:</string>
+    <string name="mobile_number_heading_text">Mobile Number:</string>
+    <string name="room_number_text">Room:</string>
+    <string name="room_text_hint">Allocate Room Number</string>
+    <string name="allocate_room_text">Allocate Room</string>
+
+    <string name="room_mail_text">
+        Hello Boarder, this is your warden from <xliff:g example="xxx hostel" id="hostelName">%s</xliff:g>\n
+        Your Room number in the hostel is: <xliff:g example="1234" id="roomNumber">%s</xliff:g>.\n\n
+        Thank you for choosing <xliff:g example="xxx hostel" id="hostelName">%s</xliff:g>. Hope you will have a pleasant stay.
+    </string>
 </resources>

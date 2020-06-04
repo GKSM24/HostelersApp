@@ -134,7 +134,7 @@ public class HostelSignUpActivity extends AppCompatActivity {
                 }
                 else{
                     int size = (imageBitmap.getHeight()*imageBitmap.getWidth()*3)/1024;
-                    if(size <= 5000){
+                    if(size > 5000){
                         Snackbar.make(uploadButton, "The uploaded image size should be less than 150kb", Snackbar.LENGTH_LONG).show();
                         flag = false;
                     }

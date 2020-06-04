@@ -2,10 +2,14 @@ package com.example.hostelers.backend;
 
 public class BoarderSignUpResult {
     private String boarderName, wardenName, hostelName, boarderEmail, wardenEmail;
-    private String wardenMobile, boarderId;
+    private String wardenMobile, boarderId, boarderPassword;
 
     public String getBoarderName() {
         return boarderName;
+    }
+
+    public String getBoarderPassword() {
+        return boarderPassword;
     }
 
     public String getWardenEmail() {
