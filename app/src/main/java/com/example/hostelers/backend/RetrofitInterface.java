@@ -62,4 +62,14 @@ public interface RetrofitInterface {
 
     @PUT("/warden/boarder_allocate_room")
     Call<Void> updateRoomStatusForBoarder(@Body HashMap<String, String> details);
+
+    @GET("/boarder/previous_issues/{hostelName}/{hostelLocation}/{boarderId}")
+    Call<ArrayList<PreviousIssuesResult>> getPreviousIssues(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("boarderId") String boarderId);
+
+    @PUT("/boarder/create_new_issue")
+    Call<Void> createBoarderIssue(@Body HashMap<String, String> requestDetails);
+
+    @GET("/warden/notifications/{hostelName}/{hostelLocation}/{wardenId}")
+    Call<ArrayList<WardenNotificationsResult>> getWardenNotifications(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("wardenId") String boarderId);
+
 }

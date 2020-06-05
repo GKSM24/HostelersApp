@@ -66,6 +66,7 @@
         \n* Food cannot be taken to the Room
         \n* Don\'t waste water\n* Hostel Gates are closed by 10pm
         \n* Timings of food may change
+        \n* 3 Per room
         \n* Hostel bill must be paid on time
         \n* Option to pay bill online
     </string>
@@ -131,15 +132,16 @@
 
 
     <string-array name="issues_spinner">
-        <item>Report an Issue</item>
-        <item>Submit Leave Letter</item>
+        <item>Room Issue</item>
+        <item>Personal Issue</item>
     </string-array>
 
     <string-array name="issue_category_spinner">
         <item>Electrical</item>
         <item>Water</item>
         <item>Carpentry</item>
-        <item>Personal</item>
+        <item>Submit Leave Letter</item>
+        <item>Health Problem</item>
     </string-array>
 
 
@@ -173,4 +175,9 @@
         Your Room number in the hostel is: <xliff:g example="1234" id="roomNumber">%s</xliff:g>.\n\n
         Thank you for choosing <xliff:g example="xxx hostel" id="hostelName">%s</xliff:g>. Hope you will have a pleasant stay.
     </string>
+    <string name="previous_issues_text">Previous Issues Raised by You</string>
+    <string name="issue_description_text">Issue Description</string>
+    <string name="description_heading_text">Description</string>
+    <string name="type_category_heading_text">Type Category:</string>
+    <string name="issue_type_heading_text">Issue Type:</string>
 </resources>
