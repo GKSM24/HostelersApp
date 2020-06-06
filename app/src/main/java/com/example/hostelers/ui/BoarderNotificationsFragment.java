@@ -29,6 +29,7 @@ import java.util.List;
  */
 public class BoarderNotificationsFragment extends Fragment {
 
+
     public BoarderNotificationsFragment() {
         // Required empty public constructor
     }
@@ -70,5 +71,12 @@ public class BoarderNotificationsFragment extends Fragment {
                 boarder_notifications.setAdapter(adapter);
             }
         });
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
     }
 }

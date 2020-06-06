@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +24,17 @@ import com.google.android.material.tabs.TabLayout;
 
 public class BoarderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, ViewPager.OnPageChangeListener  {
     private ViewPager boarderViewPager;
+    private BoarderNotificationsFragment notificationsFragment;
+    private BoarderIssuesFragment issuesFragment;
+    private BoarderPaymentsFragment paymentsFragment;
+
+
+    public BoarderActivity(){
+        notificationsFragment = BoarderNotificationsFragment.newInstance();
+        issuesFragment = BoarderIssuesFragment.newInstance();
+        paymentsFragment = BoarderPaymentsFragment.newInstance();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +56,9 @@ public class BoarderActivity extends AppCompatActivity implements AdapterView.On
 
     public void setViewPager(ViewPager viewPager){
         BoarderViewPagerAdapter adapter = new BoarderViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(BoarderNotificationsFragment.newInstance(), "Notifications");
-        adapter.addFragment(BoarderIssuesFragment.newInstance(), "Issues");
-        adapter.addFragment(BoarderPaymentsFragment.newInstance(), "Payments");
+        adapter.addFragment(notificationsFragment, "Notifications");
+        adapter.addFragment(issuesFragment, "Issues");
+        adapter.addFragment(paymentsFragment, "Payments");
         viewPager.setAdapter(adapter);
     }
 
