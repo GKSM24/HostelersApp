@@ -70,6 +70,12 @@ public interface RetrofitInterface {
     Call<Void> createBoarderIssue(@Body HashMap<String, String> requestDetails);
 
     @GET("/warden/notifications/{hostelName}/{hostelLocation}/{wardenId}")
-    Call<ArrayList<WardenNotificationsResult>> getWardenNotifications(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("wardenId") String boarderId);
+    Call<ArrayList<WardenNotificationsResult>> getWardenNotifications(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("wardenId") String wardenId);
+
+    @PUT("/boarder/make_payment")
+    Call<Void> executeMakePayment(@Body HashMap<String, String> paymentDetails);
+
+    @GET("/boarder/previous_payments/{hostelName}/{hostelLocation}/{boarderId}")
+    Call<ArrayList<PaymentListItemResult>> getBoarderPreviousPayments(@Path("hostelName") String hostelName, @Path("hostelLocation") String hostelLocation, @Path("boarderId") String boarderId);
 
 }

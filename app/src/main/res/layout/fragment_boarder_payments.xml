@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.BoarderPaymentsFragment">
 
+    <!--
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,16 +53,88 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageButton
+            android:id="@+id/phonepe_image"
+            style="@style/fee_payment_image_view_Style"
+            android:contentDescription="@string/phonepe_content_description"
+            android:src="@drawable/phonepe_drawable" />
+
+        <ImageButton
+            android:id="@+id/stripe_image"
+            style="@style/fee_payment_image_view_Style"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/stripe_content_description"
+            android:src="@drawable/stripe_drawable" />
+
+        <ImageButton
+            android:id="@+id/g_pay_image"
+            style="@style/fee_payment_image_view_Style"
+            android:contentDescription="@string/google_pay_content_description"
+            android:src="@drawable/google_pay_drawable" />
+    </LinearLayout>
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:id = "@+id/amount_pay_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint = "@string/pay_amount"
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/payment"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            />
+        <EditText
+            android:id = "@+id/payment_msg_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint = "@string/message_text"
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/message"
+            android:drawablePadding="8dp"
+            android:maxLines="1"
+            android:maxLength="20"
+            />
+        <Button
+            android:id = "@+id/payment_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/button_color"
+            android:layout_margin="8dp"
+            android:textColor="@color/button_text_color"
+            android:text="@string/make_payment"
+            />
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Previous Payments"
+        android:text="@string/previous_payments_text"
         android:textSize="20sp" />
 
+
     <ListView
+        android:id = "@+id/previous_payments_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/dummy_list_view" />
+         />
 
 </LinearLayout>

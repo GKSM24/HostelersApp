@@ -1,17 +1,18 @@
 package com.example.hostelers.ui;
 
+
 import android.os.Bundle;
+
 
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
+
 
 import com.example.hostelers.R;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
+
 
 
 /**
@@ -20,7 +21,6 @@ import com.google.android.material.tabs.TabLayout;
  * create an instance of this fragment.
  */
 public class PaymentFragment extends Fragment {
-
 
     public PaymentFragment() {
         // Required empty public constructor
@@ -50,6 +50,5 @@ public class PaymentFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_payment, container, false);
     }
-
 
 }

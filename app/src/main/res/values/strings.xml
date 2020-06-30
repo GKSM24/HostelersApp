@@ -180,4 +180,7 @@
     <string name="description_heading_text">Description</string>
     <string name="type_category_heading_text">Type Category:</string>
     <string name="issue_type_heading_text">Issue Type:</string>
+    <string name="pay_amount">Enter the amount</string>
+    <string name="payment_text">Payment</string>
+    <string name="previous_payments_text">Previous Payments</string>
 </resources>
