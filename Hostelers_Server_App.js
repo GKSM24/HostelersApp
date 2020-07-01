@@ -32,7 +32,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
                 else
                     return num
         }
-        app.post("/hostelSignUp",(req, response)=>{
+        app.post("/hostelSignUp",(req, response)=>{   //hostel signup link
             var today = new Date()
             var date = padding_id(today.getDate())+padding_id(today.getMonth()+1)
             var time = padding_id(today.getHours())+padding_id(today.getMinutes())+padding_id(today.getSeconds())
@@ -87,7 +87,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.get("/wardenSignIn/:hostelLocation/:hostelName/:wardenId", (req, response)=>{
+        app.get("/wardenSignIn/:hostelLocation/:hostelName/:wardenId", (req, response)=>{ //warden forgot password link
             const query = {
                 hostelName : req.params.hostelName,
                 hostelLocation : req.params.hostelLocation,
@@ -110,7 +110,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })    
         })
 
-        app.post("/wardenSignIn", (request, response)=>{
+        app.post("/wardenSignIn", (request, response)=>{ // warden signin link
             const query = {
                 hostelName : request.body.hostelName,
                 hostelLocation : request.body.hostelLocation,
@@ -133,7 +133,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
 
         
 
-        app.put("/warden/change_password", (req, response)=>{
+        app.put("/warden/change_password", (req, response)=>{ //warden change password
             const query = {
                 wardenId : req.body.id,
                 hostelLocation : req.body.hostelLocation,
@@ -157,7 +157,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.put("/boarder/change_password", (req, response)=>{
+        app.put("/boarder/change_password", (req, response)=>{ //boarder change password
             const query = {
                 boarderId : req.body.id,
                 hostelLocation : req.body.hostelLocation,
@@ -181,7 +181,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.post("/hostel_list", (_req,response)=>{
+        app.post("/hostel_list", (_req,response)=>{         // hostel list link
             hostel_list.find().toArray((_err, result)=>{
                 if(result.length == 0){
                     response.status(404).send()
@@ -193,8 +193,8 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
         })
 
 
-        // also add the new boarder details into the new admissions collection
-        app.post("/boarderSignUp", (req, response)=>{
+        
+        app.post("/boarderSignUp", (req, response)=>{       //hostel boarder sign up link
             var date = new Date()
             const joiningDate = date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear()
             var boarderId = "Boarder"+padding_id(date.getSeconds())+padding_pwd(date.getMilliseconds())+padding_id(date.getMinutes())
@@ -300,7 +300,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.post("/boarderSignIn", (req, response)=>{
+        app.post("/boarderSignIn", (req, response)=>{   // boarder sign in link
             const query = {
                 hostelName : req.body.hostelName,
                 hostelLocation : req.body.hostelLocation,
@@ -323,7 +323,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.get("/boarderSignIn/:hostelLocation/:hostelName/:boarderId", (req, response)=>{
+        app.get("/boarderSignIn/:hostelLocation/:hostelName/:boarderId", (req, response)=>{ //boarder forgot password link
             const query = {
                 hostelName : req.params.hostelName,
                 hostelLocation : req.params.hostelLocation,
@@ -342,7 +342,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.get("/warden/boarder_list/:hostelName/:hostelLocation", (req, response)=>{
+        app.get("/warden/boarder_list/:hostelName/:hostelLocation", (req, response)=>{  // warden notify boarders list link
             const query = {
                 hostelName : req.params.hostelName,
                 hostelLocation : req.params.hostelLocation
@@ -372,7 +372,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
         })
 
 
-        app.put("/notify_boarder", (req, response)=>{
+        app.put("/notify_boarder", (req, response)=>{   // notify boarder (adding message to the warden)
             const query = {
                 boarderId : req.body.boarderId,
                 hostelName : req.body.hostelName,
@@ -397,7 +397,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.get("/boarder_notifications/:hostelName/:hostelLocation/:boarderId", (req, response)=>{
+        app.get("/boarder_notifications/:hostelName/:hostelLocation/:boarderId", (req, response)=>{ // get the boarder notifications from warden link
             const query = {
                 hostelName : req.params.hostelName,
                 hostelLocation: req.params.hostelLocation,
@@ -424,7 +424,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.delete("/boarder_notifications/delete_notification/:hostelName/:hostelLocation/:boarderId/:notification_position", (req, response)=>{
+        app.delete("/boarder_notifications/delete_notification/:hostelName/:hostelLocation/:boarderId/:notification_position", (req, response)=>{ // delete the notification from the boarder notifications list link
             const query = {
                 hostelName : req.params.hostelName,
                 hostelLocation: req.params.hostelLocation,
@@ -453,7 +453,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.get("/warden/boarder_admissions/:hostelName/:hostelLocation/:wardenId", (req, response)=>{
+        app.get("/warden/boarder_admissions/:hostelName/:hostelLocation/:wardenId", (req, response)=>{  // boarder admissions in the warden account link
             const query = {
                 hostelName : req.params.hostelName,
                 hostelLocation : req.params.hostelLocation,
@@ -482,7 +482,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.put("/warden/boarder_allocate_room",(req,response)=>{
+        app.put("/warden/boarder_allocate_room",(req,response)=>{   //allocating the room to the new boarder by warden link
             const warden_query = {
                 hostelName : req.body.hostelName,
                 hostelLocation : req.body.hostelLocation,
@@ -519,7 +519,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             
         })
 
-        app.get("/boarder/previous_issues/:hostelName/:hostelLocation/:boarderId", (req, response)=>{
+        app.get("/boarder/previous_issues/:hostelName/:hostelLocation/:boarderId", (req, response)=>{   //loading previous issues of respective boarder
             const query = {
                 boarderId : req.params.boarderId,
                 hostelName : req.params.hostelName,
@@ -532,7 +532,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             })
         })
 
-        app.put("/boarder/create_new_issue", (req, response)=>{
+        app.put("/boarder/create_new_issue", (req, response)=>{ // boarder creating new issue link
             const boarder_query = {
                 boarderId : req.body.boarderId,
                 hostelName : req.body.hostelName,
@@ -549,11 +549,12 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
                 }
             })
             boarder_message_details.findOne(boarder_query, (_err, bFindResult)=>{
-                if(bFindResult != null)
+                var cat = req.body.typeCategory
+                if(bFindResult != null && cat !== "Payment")
                 {
                     const issue = {
                         issueType : req.body.issueType,
-                        typeCategory : req.body.typeCategory,
+                        typeCategory : cat,
                         issueDescription : req.body.issueDescription
                     }
                     bFindResult.previous_issues.unshift(issue)
@@ -562,7 +563,7 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
                             console.log("issues error")
                         }
                         else{
-                            response.status(200).send()
+                            console.log("issues raised succesfully")
                         }
                     })
                 
@@ -584,13 +585,14 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
                         }
                         else{
                             console.log("warden notification added")
+                            response.status(200).send()
                         }
                     })
                 }
             })
         })
 
-        app.get("/warden/notifications/:hostelName/:hostelLocation/:wardenId", (req, response)=>{
+        app.get("/warden/notifications/:hostelName/:hostelLocation/:wardenId", (req, response)=>{   // warden notifications list link
             const query = {
                 wardenId : req.params.wardenId,
                 hostelName : req.params.hostelName,
@@ -599,6 +601,48 @@ mongoClient.connect(url, {useUnifiedTopology:true}, (err, db)=>{
             warden_message_details.findOne(query, (_err, result)=>{
                 if(result != null){
                     response.status(200).send(JSON.stringify(result.warden_notifications))
+                }
+            })
+        })
+
+
+        app.put("/boarder/make_payment", (request, response)=>{     // boarder due payment link
+            const query = {
+                boarderId : request.body.boarderId,
+                hostelName : request.body.hostelName,
+                hostelLocation : request.body.hostelLocation
+            }
+            boarder_message_details.findOne(query, (_err, findRes)=>{
+                var date = new Date()
+                var date_string = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()
+                var paymentObj = {
+                    tr_date : date_string,
+                    tr_amount : request.body.amount,
+                    tr_status : "Success",
+                    tr_message : request.body.amt_message
+                }
+                findRes.previous_payments.unshift(paymentObj)
+                boarder_message_details.updateOne(query, {$set: {previous_payments:findRes.previous_payments}}, (err, _updRes)=>{
+                    if(err){
+                        findRes.previous_payments[0].tr_status = "Failure"
+                        response.status(12).send()
+                    }
+                    else{
+                        response.status(200).send()
+                    }
+                })
+            })
+        })
+
+        app.get("/boarder/previous_payments/:hostelName/:hostelLocation/:boarderId", (req, response)=>{ // boarder previous payments link
+            const query = {
+                boarderId : req.params.boarderId,
+                hostelName : req.params.hostelName,
+                hostelLocation : req.params.hostelLocation
+            }
+            boarder_message_details.findOne(query, (_err, result)=>{
+                if(result != null){
+                    response.status(200).send(JSON.stringify(result.previous_payments))
                 }
             })
         })
